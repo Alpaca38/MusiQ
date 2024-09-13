@@ -14,7 +14,7 @@ struct Genres: Decodable {
 
 final class MusicKitManager: ObservableObject {
     static let shared = MusicKitManager()
-    private init() { }
+    private init() {}
     
     func fetchCityTopChart(with genreSelection: GenreSelection) async throws -> [MusicCatalogChart<Song>] {
         let genre = try await getGenre(genreSelection)
