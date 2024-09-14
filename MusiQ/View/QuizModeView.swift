@@ -7,22 +7,11 @@
 
 import SwiftUI
 
-struct Mode: Identifiable, Hashable {
-    let id = UUID()
-    let name: String
-    let colors: [Color]
-}
-
 struct QuizModeView: View {
-    let modes: [Mode] = [
-        Mode(name: "노래 듣고 맞추기", colors: [.green, .blue]),
-        Mode(name: "앨범커버 보고 맞추기", colors: [.purple, .red])
-    ]
-    
     var body: some View {
         NavigationView {
             VStack {
-                CardListView(modes: modes)
+                CardListView()
                     .navigationTitle("퀴즈 모드 선택")
                 Spacer()
             }
@@ -31,15 +20,13 @@ struct QuizModeView: View {
 }
 
 struct CardListView: View {
-    let modes: [Mode]
-    
     var body: some View {
         if #available(iOS 17.0, *) {
             ScrollView(.horizontal) {
                 HStack {
-                    ForEach(modes, id: \.id) { item in
+                    ForEach(Mode.allCases, id: \.self) { item in
                         NavigationLink {
-                            NavigationLazyView(QuizCategoryView())
+                            NavigationLazyView(QuizCategoryView(mode: item))
                         } label: {
                             cardView(item)
                                 .scrollTransition(topLeading: .interactive, bottomTrailing: .interactive, axis: .horizontal) { effect, phase in
@@ -58,8 +45,13 @@ struct CardListView: View {
         } else {
             ScrollView(.horizontal) {
                 HStack {
-                    ForEach(modes, id: \.id) { item in
-                        cardView(item)
+                    ForEach(Mode.allCases, id: \.self) { item in
+                        NavigationLink {
+                            NavigationLazyView(QuizCategoryView(mode: item))
+                        } label: {
+                            cardView(item)
+                        }
+
                     }
                 }
             }
@@ -82,6 +74,6 @@ struct CardListView: View {
     }
 }
 
-#Preview {
-    QuizModeView()
-}
+//#Preview {
+//    QuizModeView()
+//}

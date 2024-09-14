@@ -23,6 +23,7 @@
 		D1D43F4A2C954B5100D65A84 /* QuizCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F492C954B5100D65A84 /* QuizCategoryView.swift */; };
 		D1D43F4D2C954FDC00D65A84 /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F4C2C954FDC00D65A84 /* Extension+Color.swift */; };
 		D1D43F4F2C95509B00D65A84 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F4E2C95509B00D65A84 /* QuizView.swift */; };
+		D1D43F522C95A6B900D65A84 /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F512C95A6B900D65A84 /* Mode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +56,7 @@
 		D1D43F492C954B5100D65A84 /* QuizCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCategoryView.swift; sourceTree = "<group>"; };
 		D1D43F4C2C954FDC00D65A84 /* Extension+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Color.swift"; sourceTree = "<group>"; };
 		D1D43F4E2C95509B00D65A84 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		D1D43F512C95A6B900D65A84 /* Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 		D1D43F2D2C942C5300D65A84 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D1D43F502C95A69500D65A84 /* Quiz */,
 				D1D43F2E2C942C5E00D65A84 /* MusicKit */,
 			);
 			path = Model;
@@ -168,6 +171,14 @@
 				D1D43F4C2C954FDC00D65A84 /* Extension+Color.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		D1D43F502C95A69500D65A84 /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				D1D43F512C95A6B900D65A84 /* Mode.swift */,
+			);
+			path = Quiz;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1D43F3E2C94788E00D65A84 /* MusicKitAuthManager.swift in Sources */,
+				D1D43F522C95A6B900D65A84 /* Mode.swift in Sources */,
 				D1D43F1E2C9423E000D65A84 /* ContentView.swift in Sources */,
 				D1D43F302C942C6800D65A84 /* MusicKitManager.swift in Sources */,
 				D1D43F412C95212000D65A84 /* Genres.swift in Sources */,

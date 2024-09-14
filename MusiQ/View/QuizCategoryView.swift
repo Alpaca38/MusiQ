@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct QuizCategoryView: View {
+    let mode: Mode
+    
     var body: some View {
         ScrollView {
-            CategoryGridView()
+            CategoryGridView(mode: mode)
                 .padding()
                 .navigationTitle("장르 선택")
         }
@@ -18,13 +20,15 @@ struct QuizCategoryView: View {
 }
 
 struct CategoryGridView: View {
+    let mode: Mode
+    
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     
     var body: some View {
         LazyVGrid(columns: columns, content: {
             ForEach(GenreSelection.allCases, id: \.id) { item in
                 NavigationLink {
-                    NavigationLazyView(QuizView())
+                    NavigationLazyView(QuizView(mode: mode, genre: item))
                 } label: {
                     categoryItem(item)
                 }
@@ -44,7 +48,7 @@ struct CategoryGridView: View {
         }
     }
 }
-
-#Preview {
-    QuizCategoryView()
-}
+//
+//#Preview {
+//    QuizCategoryView()
+//}

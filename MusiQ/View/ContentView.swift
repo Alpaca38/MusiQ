@@ -6,32 +6,19 @@
 //
 
 import SwiftUI
-import MusicKit
 
 struct ContentView: View {
-    @State private var songs: Songs = []
-    
     var body: some View {
-        VStack {
-            List {
-                ForEach(songs.first?.data ?? [], id: \.id) { item in
-                    Text(item.attributes.name)
+        TabView {
+            QuizModeView()
+                .tabItem {
+                    Image(systemName: "house")
                 }
-            }
         }
-        .padding()
-        .task {
-            await MusicKitAuthManager.shared.requestMusicAuthorization()
-            do {
-                songs = try await MusicKitManager.shared.fetchTopChart(with: .ost)
-                print(songs)
-            } catch {
-                print(error)
-            }
-        }
+        .tint(.black)
     }
 }
-
+//
 //#Preview {
 //    ContentView()
 //}

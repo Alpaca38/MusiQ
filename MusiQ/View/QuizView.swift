@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct QuizView: View {
+    let mode: Mode
+    let genre: GenreSelection
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if mode.name == Mode.song.name {
+            Text("노래 맞추기 퀴즈")
+        } else {
+            Text("앨범 커버 맞추기 퀴즈")
+        }
     }
 }
 //
