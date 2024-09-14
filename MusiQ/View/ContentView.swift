@@ -9,7 +9,6 @@ import SwiftUI
 import MusicKit
 
 struct ContentView: View {
-    @State private var songChartsResponse: [MusicCatalogChart<Song>] = []
     @State private var songs: Songs = []
     
     var body: some View {

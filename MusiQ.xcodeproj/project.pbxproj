@@ -18,6 +18,11 @@
 		D1D43F3E2C94788E00D65A84 /* MusicKitAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F3D2C94788E00D65A84 /* MusicKitAuthManager.swift */; };
 		D1D43F412C95212000D65A84 /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F402C95212000D65A84 /* Genres.swift */; };
 		D1D43F432C95215800D65A84 /* TopChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F422C95215800D65A84 /* TopChart.swift */; };
+		D1D43F452C952A3C00D65A84 /* QuizModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F442C952A3C00D65A84 /* QuizModeView.swift */; };
+		D1D43F482C95495D00D65A84 /* NavigationLazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F472C95495D00D65A84 /* NavigationLazyView.swift */; };
+		D1D43F4A2C954B5100D65A84 /* QuizCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F492C954B5100D65A84 /* QuizCategoryView.swift */; };
+		D1D43F4D2C954FDC00D65A84 /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F4C2C954FDC00D65A84 /* Extension+Color.swift */; };
+		D1D43F4F2C95509B00D65A84 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F4E2C95509B00D65A84 /* QuizView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,6 +50,11 @@
 		D1D43F3D2C94788E00D65A84 /* MusicKitAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicKitAuthManager.swift; sourceTree = "<group>"; };
 		D1D43F402C95212000D65A84 /* Genres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
 		D1D43F422C95215800D65A84 /* TopChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopChart.swift; sourceTree = "<group>"; };
+		D1D43F442C952A3C00D65A84 /* QuizModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModeView.swift; sourceTree = "<group>"; };
+		D1D43F472C95495D00D65A84 /* NavigationLazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLazyView.swift; sourceTree = "<group>"; };
+		D1D43F492C954B5100D65A84 /* QuizCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCategoryView.swift; sourceTree = "<group>"; };
+		D1D43F4C2C954FDC00D65A84 /* Extension+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Color.swift"; sourceTree = "<group>"; };
+		D1D43F4E2C95509B00D65A84 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +88,8 @@
 		D1D43F1A2C9423E000D65A84 /* MusiQ */ = {
 			isa = PBXGroup;
 			children = (
+				D1D43F4B2C954FD000D65A84 /* Extension */,
+				D1D43F462C95493700D65A84 /* Wrapper */,
 				D1D43F3A2C94786500D65A84 /* ViewModel */,
 				D1D43F2D2C942C5300D65A84 /* Model */,
 				D1D43F2C2C942C3E00D65A84 /* View */,
@@ -100,6 +112,9 @@
 			isa = PBXGroup;
 			children = (
 				D1D43F1D2C9423E000D65A84 /* ContentView.swift */,
+				D1D43F442C952A3C00D65A84 /* QuizModeView.swift */,
+				D1D43F492C954B5100D65A84 /* QuizCategoryView.swift */,
+				D1D43F4E2C95509B00D65A84 /* QuizView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -137,6 +152,22 @@
 				D1D43F422C95215800D65A84 /* TopChart.swift */,
 			);
 			path = ResponseModel;
+			sourceTree = "<group>";
+		};
+		D1D43F462C95493700D65A84 /* Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				D1D43F472C95495D00D65A84 /* NavigationLazyView.swift */,
+			);
+			path = Wrapper;
+			sourceTree = "<group>";
+		};
+		D1D43F4B2C954FD000D65A84 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D1D43F4C2C954FDC00D65A84 /* Extension+Color.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,9 +251,14 @@
 				D1D43F1E2C9423E000D65A84 /* ContentView.swift in Sources */,
 				D1D43F302C942C6800D65A84 /* MusicKitManager.swift in Sources */,
 				D1D43F412C95212000D65A84 /* Genres.swift in Sources */,
+				D1D43F4D2C954FDC00D65A84 /* Extension+Color.swift in Sources */,
+				D1D43F4F2C95509B00D65A84 /* QuizView.swift in Sources */,
 				D1D43F432C95215800D65A84 /* TopChart.swift in Sources */,
+				D1D43F482C95495D00D65A84 /* NavigationLazyView.swift in Sources */,
 				D1D43F372C946CA300D65A84 /* GenreSelection.swift in Sources */,
+				D1D43F452C952A3C00D65A84 /* QuizModeView.swift in Sources */,
 				D1D43F1C2C9423E000D65A84 /* MusiQApp.swift in Sources */,
+				D1D43F4A2C954B5100D65A84 /* QuizCategoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
