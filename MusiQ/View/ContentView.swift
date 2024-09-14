@@ -10,20 +10,22 @@ import MusicKit
 
 struct ContentView: View {
     @State private var songChartsResponse: [MusicCatalogChart<Song>] = []
+    @State private var songs: Songs = []
     
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            List {
+                ForEach(songs.first?.data ?? [], id: \.id) { item in
+                    Text(item.attributes.name)
+                }
+            }
         }
         .padding()
         .task {
             await MusicKitAuthManager.shared.requestMusicAuthorization()
             do {
-                songChartsResponse = try await MusicKitManager.shared.fetchCityTopChart(with: .alternative)
-                print(songChartsResponse)
+                songs = try await MusicKitManager.shared.fetchTopChart(with: .ost)
+                print(songs)
             } catch {
                 print(error)
             }

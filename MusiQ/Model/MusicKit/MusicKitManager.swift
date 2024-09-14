@@ -8,33 +8,31 @@
 import Foundation
 import MusicKit
 
-struct Genres: Decodable {
-    let data: [Genre]
-}
 
 final class MusicKitManager: ObservableObject {
     static let shared = MusicKitManager()
     private init() {}
     
-    func fetchCityTopChart(with genreSelection: GenreSelection) async throws -> [MusicCatalogChart<Song>] {
-        let genre = try await getGenre(genreSelection)
-        var request = MusicCatalogChartsRequest(
-            genre: genre.data.first,
-            kinds: [.cityTop],
-            types: [Song.self]
-        )
-        request.limit = 10
-        request.offset = 0
-        
-        return try await request.response().songCharts
+    func fetchTopChart(with genre: GenreSelection) async throws -> Songs {
+        do {
+            let currentCountry = try await MusicDataRequest.currentCountryCode
+            guard let url = URL(string: "https://api.music.apple.com/v1/catalog/\(currentCountry)/charts?types=songs&genre=\(genre.genreData.id)&limit=10") else {
+                throw URLError(.badURL)
+            }
+            let request = MusicDataRequest(urlRequest: URLRequest(url: url))
+            let response = try await request.response()
+            
+            let result = try JSONDecoder().decode(TopChart.self, from: response.data)
+            return result.results.songs
+        } catch {
+            print(error)
+            return []
+        }
     }
     
-    func getGenre(_ genreSelection: GenreSelection) async throws -> Genres {
+    func getGenre(_ genreID: String) async throws -> Genres {
         do {
-            let genreID = genreSelection.genreData.id
-            let countryCode = try await MusicDataRequest.currentCountryCode
-            
-            let genreURL = "https://api.music.apple.com/v1/catalog/\(countryCode)/genres/\(genreID)"
+            let genreURL = "https://api.music.apple.com/v1/catalog/kr/genres/\(genreID)"
             
             guard let url = URL(string: genreURL) else {
                 throw URLError(.badURL)

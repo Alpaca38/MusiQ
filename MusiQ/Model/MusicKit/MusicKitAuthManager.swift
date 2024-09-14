@@ -10,7 +10,7 @@ import MusicKit
 
 final class MusicKitAuthManager: ObservableObject {
     static let shared = MusicKitAuthManager()
-    private init() { }
+    private init() {}
     
     @Published var isAuthorizedForMusicKit = false
     @Published var musicKitError: MusicKitError?
