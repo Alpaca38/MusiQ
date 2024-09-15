@@ -13,7 +13,7 @@ struct QuizModeView: View {
             VStack {
                 CardListView()
                     .navigationTitle("퀴즈 모드 선택")
-                Spacer()
+                    .padding(.bottom, 150)
             }
         }
     }
@@ -30,9 +30,9 @@ struct CardListView: View {
                         } label: {
                             cardView(item)
                                 .scrollTransition(topLeading: .interactive, bottomTrailing: .interactive, axis: .horizontal) { effect, phase in
-                                    effect.scaleEffect(1 - abs(phase.value))
+                                    effect.scaleEffect(1 - abs(phase.value) * 2)
                                         .opacity(1 - abs(phase.value))
-                                        .rotation3DEffect(.degrees(phase.value * 90), axis: (x: 0, y: 1, z: 0))
+                                        .rotation3DEffect(.degrees(phase.value * 180), axis: (x: 0, y: 1, z: 0))
                                 }
                         }
                     }

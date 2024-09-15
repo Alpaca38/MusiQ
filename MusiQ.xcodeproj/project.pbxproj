@@ -24,6 +24,8 @@
 		D1D43F4D2C954FDC00D65A84 /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F4C2C954FDC00D65A84 /* Extension+Color.swift */; };
 		D1D43F4F2C95509B00D65A84 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F4E2C95509B00D65A84 /* QuizView.swift */; };
 		D1D43F522C95A6B900D65A84 /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F512C95A6B900D65A84 /* Mode.swift */; };
+		D1D43F542C96EFE000D65A84 /* ButtonWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F532C96EFE000D65A84 /* ButtonWrapper.swift */; };
+		D1D43F572C96F34D00D65A84 /* DefaultButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F562C96F34D00D65A84 /* DefaultButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,6 +59,8 @@
 		D1D43F4C2C954FDC00D65A84 /* Extension+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Color.swift"; sourceTree = "<group>"; };
 		D1D43F4E2C95509B00D65A84 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		D1D43F512C95A6B900D65A84 /* Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
+		D1D43F532C96EFE000D65A84 /* ButtonWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWrapper.swift; sourceTree = "<group>"; };
+		D1D43F562C96F34D00D65A84 /* DefaultButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,7 @@
 		D1D43F1A2C9423E000D65A84 /* MusiQ */ = {
 			isa = PBXGroup;
 			children = (
+				D1D43F552C96F32500D65A84 /* Modifier */,
 				D1D43F4B2C954FD000D65A84 /* Extension */,
 				D1D43F462C95493700D65A84 /* Wrapper */,
 				D1D43F3A2C94786500D65A84 /* ViewModel */,
@@ -161,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				D1D43F472C95495D00D65A84 /* NavigationLazyView.swift */,
+				D1D43F532C96EFE000D65A84 /* ButtonWrapper.swift */,
 			);
 			path = Wrapper;
 			sourceTree = "<group>";
@@ -179,6 +185,14 @@
 				D1D43F512C95A6B900D65A84 /* Mode.swift */,
 			);
 			path = Quiz;
+			sourceTree = "<group>";
+		};
+		D1D43F552C96F32500D65A84 /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				D1D43F562C96F34D00D65A84 /* DefaultButtonStyle.swift */,
+			);
+			path = Modifier;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +281,8 @@
 				D1D43F4F2C95509B00D65A84 /* QuizView.swift in Sources */,
 				D1D43F432C95215800D65A84 /* TopChart.swift in Sources */,
 				D1D43F482C95495D00D65A84 /* NavigationLazyView.swift in Sources */,
+				D1D43F542C96EFE000D65A84 /* ButtonWrapper.swift in Sources */,
+				D1D43F572C96F34D00D65A84 /* DefaultButtonStyle.swift in Sources */,
 				D1D43F372C946CA300D65A84 /* GenreSelection.swift in Sources */,
 				D1D43F452C952A3C00D65A84 /* QuizModeView.swift in Sources */,
 				D1D43F1C2C9423E000D65A84 /* MusiQApp.swift in Sources */,
