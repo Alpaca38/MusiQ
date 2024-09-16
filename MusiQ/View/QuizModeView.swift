@@ -30,7 +30,7 @@ struct CardListView: View {
                         } label: {
                             cardView(item)
                                 .scrollTransition(topLeading: .interactive, bottomTrailing: .interactive, axis: .horizontal) { effect, phase in
-                                    effect.scaleEffect(1 - abs(phase.value) * 2)
+                                    effect.scaleEffect(1 - abs(phase.value))
                                         .opacity(1 - abs(phase.value))
                                         .rotation3DEffect(.degrees(phase.value * 180), axis: (x: 0, y: 1, z: 0))
                                 }
