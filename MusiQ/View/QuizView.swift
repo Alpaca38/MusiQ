@@ -17,6 +17,7 @@ struct QuizView: View {
     @State private var inputSongName = ""
     @State private var inputArtistName = ""
     @State private var songs: [SongData] = []
+    @State private var songList: MusicItemCollection<Song> = []
     @State private var isLoading = false
     
     var body: some View {
@@ -57,9 +58,10 @@ struct QuizView: View {
             TextField("노래 제목을 입력해주세요.", text: $inputSongName)
                 .textFieldStyle(.roundedBorder)
             NavigationLink {
-                let currentSong = songs[safe: currentSongIndex]
-                let isCorrect = inputSongName.localizedCaseInsensitiveContains(currentSong?.attributes.name ?? "")
-                NavigationLazyView(SongCheckView(mode: mode, genre: genre, isCorrect: isCorrect, songData: currentSong, currentIndex: $currentSongIndex))
+                if let currentSong = songs[safe: currentSongIndex], let currentSongList = songList[safe: currentSongIndex] {
+                    let isCorrect = inputSongName.localizedCaseInsensitiveContains(currentSong.attributes.name)
+                    NavigationLazyView(SongCheckView(mode: mode, genre: genre, isCorrect: isCorrect, songData: currentSong, currentSongList: currentSongList, currentIndex: $currentSongIndex))
+                }
             } label: {
                 Text("확인")
                     .asDefaultButtonStyle()
@@ -117,6 +119,7 @@ struct QuizView: View {
         await MusicKitAuthManager.shared.requestMusicAuthorization()
         do {
             songs = try await MusicKitManager.shared.fetchTopChart(with: genre)
+            songList = try await MusicKitManager.shared.fetchCityTopChart(with: genre)
         } catch {
             print(error)
         }
@@ -130,6 +133,12 @@ struct QuizView: View {
 //    QuizView()
 //}
 extension Array {
+    subscript(safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}
+
+extension MusicItemCollection<Song> {
     subscript(safe index: Index) -> Element? {
         return indices.contains(index) ? self[index] : nil
     }

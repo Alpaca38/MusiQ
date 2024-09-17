@@ -32,6 +32,38 @@ final class MusicKitManager: ObservableObject {
         }
     }
     
+    func fetchCityTopChart(with genreSelection: GenreSelection) async throws -> MusicItemCollection<Song> {
+        let genre = try await getGenre(genreSelection.genreData.id)
+        var request = MusicCatalogChartsRequest(
+            genre: genre.data.first,
+            kinds: [.cityTop],
+            types: [Song.self]
+        )
+        request.limit = 10
+        request.offset = 0
+        
+        return try await request.response().songCharts.first!.items
+    }
+    
+    func getGenre(_ genreID: String) async throws -> Genres {
+        do {
+            let genreURL = "https://api.music.apple.com/v1/catalog/kr/genres/\(genreID)"
+            
+            guard let url = URL(string: genreURL) else {
+                throw URLError(.badURL)
+            }
+            
+            let request = MusicDataRequest(urlRequest: URLRequest(url: url))
+            let response = try await request.response()
+            
+            let genre = try JSONDecoder().decode(Genres.self, from: response.data)
+            return genre
+        } catch {
+            print(error)
+            return Genres(data: [])
+        }
+    }
+    
     func playMusic(id: MusicItemID) async throws {
         let request = MusicCatalogResourceRequest<Song>(matching: \.id, equalTo: id)
         let response = try await request.response()
