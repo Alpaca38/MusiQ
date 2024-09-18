@@ -36,7 +36,7 @@ struct WrongAnswerView: View {
     }
     
     func wrongAnswerCell(_ item: Quiz) -> some View {
-        HStack {
+        HStack(spacing: 15) {
             AsyncImage(url: URL(string: item.artworkURL!)) { phase in
                 switch phase {
                 case .empty:
@@ -45,6 +45,7 @@ struct WrongAnswerView: View {
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fit)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
                 case .failure(_):
                     Color.gray
                 @unknown default:
