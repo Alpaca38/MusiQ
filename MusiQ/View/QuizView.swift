@@ -29,8 +29,8 @@ struct QuizView: View {
                 }
                 .fullScreenCover(isPresented: $isFullPresented, content: {
                     if let currentSong = songs[safe: currentSongIndex], let currentSongList = songList[safe: currentSongIndex] {
-                        let isCorrect = inputSongName.localizedCaseInsensitiveContains(currentSong.attributes.name)
-                        NavigationLazyView(SongCheckView(mode: mode, genre: genre, isCorrect: isCorrect, songData: currentSong, currentSongList: currentSongList, currentIndex: $currentSongIndex))
+                        let isCorrect = inputSongName.localizedCaseInsensitiveContains(currentSong.attributes.answerSongName)
+                        NavigationLazyView(SongCheckView(mode: mode, genre: genre, isCorrect: isCorrect, songData: currentSong, currentSongList: currentSongList, currentIndex: $currentSongIndex, inputSongName: $inputSongName))
                     }
                 })
         } else {
@@ -68,7 +68,6 @@ struct QuizView: View {
                 .asDefaultButtonStyle()
                 .asButton {
                     isFullPresented.toggle()
-                    inputSongName = ""
                 }
         }
         .padding()

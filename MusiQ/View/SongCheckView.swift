@@ -15,7 +15,9 @@ struct SongCheckView: View {
     let songData: SongData
     let currentSongList: Song
     @Binding var currentIndex: Int
+    @Binding var inputSongName: String
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var rootPresentation: RootPresentation
     
     var body: some View {
         VStack(spacing: 40) {
@@ -51,9 +53,10 @@ struct SongCheckView: View {
                 .asButton {
                     if currentIndex < 9 {
                         currentIndex += 1
+                        inputSongName = ""
                         dismiss()
                     } else {
-                        
+                        rootPresentation.reset()
                     }
                 }
                 .asDefaultButtonStyle()
