@@ -15,6 +15,7 @@ struct SongCheckView: View {
     let songData: SongData
     let currentSongList: Song
     @Binding var currentIndex: Int
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack(spacing: 40) {
@@ -46,19 +47,16 @@ struct SongCheckView: View {
         VStack {
             Text(isCorrect ? "정답" : "오답")
                 .bold()
-            NavigationLink {
-                if currentIndex < 9 {
-                    QuizView(mode: mode, genre: genre, currentSongIndex: $currentIndex)
-                } else {
-                    
+            Text(currentIndex < 9 ? "다음" : "완료")
+                .asButton {
+                    if currentIndex < 9 {
+                        currentIndex += 1
+                        dismiss()
+                    } else {
+                        
+                    }
                 }
-            } label: {
-                Text("다음")
-                    .asDefaultButtonStyle()
-            }
-            .simultaneousGesture(TapGesture().onEnded {
-                currentIndex += 1
-            })
+                .asDefaultButtonStyle()
         }
     }
 }

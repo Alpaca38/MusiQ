@@ -19,6 +19,7 @@ struct QuizView: View {
     @State private var songs: [SongData] = []
     @State private var songList: MusicItemCollection<Song> = []
     @State private var isLoading = false
+    @State private var isFullPresented = false
     
     var body: some View {
         if mode.name == Mode.song.name {
@@ -26,6 +27,12 @@ struct QuizView: View {
                 .task {
                     await loadSongs()
                 }
+                .fullScreenCover(isPresented: $isFullPresented, content: {
+                    if let currentSong = songs[safe: currentSongIndex], let currentSongList = songList[safe: currentSongIndex] {
+                        let isCorrect = inputSongName.localizedCaseInsensitiveContains(currentSong.attributes.name)
+                        NavigationLazyView(SongCheckView(mode: mode, genre: genre, isCorrect: isCorrect, songData: currentSong, currentSongList: currentSongList, currentIndex: $currentSongIndex))
+                    }
+                })
         } else {
             artworkView()
         }
@@ -57,15 +64,12 @@ struct QuizView: View {
         HStack {
             TextField("노래 제목을 입력해주세요.", text: $inputSongName)
                 .textFieldStyle(.roundedBorder)
-            NavigationLink {
-                if let currentSong = songs[safe: currentSongIndex], let currentSongList = songList[safe: currentSongIndex] {
-                    let isCorrect = inputSongName.localizedCaseInsensitiveContains(currentSong.attributes.name)
-                    NavigationLazyView(SongCheckView(mode: mode, genre: genre, isCorrect: isCorrect, songData: currentSong, currentSongList: currentSongList, currentIndex: $currentSongIndex))
+            Text("확인")
+                .asDefaultButtonStyle()
+                .asButton {
+                    isFullPresented.toggle()
+                    inputSongName = ""
                 }
-            } label: {
-                Text("확인")
-                    .asDefaultButtonStyle()
-            }
         }
         .padding()
     }

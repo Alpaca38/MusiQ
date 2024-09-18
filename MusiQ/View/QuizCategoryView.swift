@@ -23,18 +23,21 @@ struct QuizCategoryView: View {
 struct CategoryGridView: View {
     let mode: Mode
     @Binding var currentSongIndex: Int
+    @State private var selectedGenre: GenreSelection?
     
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     
     var body: some View {
         LazyVGrid(columns: columns, content: {
             ForEach(GenreSelection.allCases, id: \.id) { item in
-                NavigationLink {
-                    NavigationLazyView(QuizView(mode: mode, genre: item, currentSongIndex: $currentSongIndex))
-                } label: {
-                    categoryItem(item)
-                }
+                categoryItem(item)
+                    .asButton {
+                        selectedGenre = item
+                    }
             }
+        })
+        .fullScreenCover(item: $selectedGenre, content: { genre in
+            NavigationLazyView(QuizView(mode: mode, genre: genre, currentSongIndex: $currentSongIndex))
         })
     }
     
