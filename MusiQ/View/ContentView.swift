@@ -17,6 +17,13 @@ struct ContentView: View {
                     QuizModeView()
                         .tabItem {
                             Image(systemName: "house")
+                            Text("퀴즈")
+                        }
+                    
+                    WrongAnswerView()
+                        .tabItem {
+                            Image(systemName: "doc.text.magnifyingglass")
+                            Text("틀린 문제")
                         }
                 }
                 .tint(.black)

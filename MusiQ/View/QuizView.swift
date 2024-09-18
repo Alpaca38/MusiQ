@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MusicKit
+import RealmSwift
 
 struct QuizView: View {
     let mode: Mode
@@ -20,6 +21,9 @@ struct QuizView: View {
     @State private var songList: MusicItemCollection<Song> = []
     @State private var isLoading = false
     @State private var isFullPresented = false
+    
+    @ObservedResults(Quiz.self)
+    var quizList
     
     var body: some View {
         if mode.name == Mode.song.name {
@@ -68,6 +72,10 @@ struct QuizView: View {
                 .asDefaultButtonStyle()
                 .asButton {
                     isFullPresented.toggle()
+                    if let currentSong = songs[safe: currentSongIndex] , let currentSongList = songList[safe: currentSongIndex] {
+                        let isCorrect = inputSongName.localizedCaseInsensitiveContains(currentSong.attributes.answerSongName)
+                        $quizList.append(Quiz(mode: mode.name, genre: genre.genreData.name, isCorrect: isCorrect, dataID: currentSong.id, artworkURL: currentSongList.artwork?.url(width: 50, height: 50)?.absoluteString, songName: currentSong.attributes.name, artistName: currentSong.attributes.artistName))
+                    }
                 }
         }
         .padding()
