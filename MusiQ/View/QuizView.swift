@@ -66,11 +66,13 @@ struct QuizView: View {
     
     func inputSongField() -> some View {
         HStack {
-            TextField("노래 제목을 입력해주세요.(띄어쓰기 없이)", text: $inputSongName)
+            TextField("제목을 띄어쓰기 없이 입력해주세요.", text: $inputSongName)
                 .textFieldStyle(.roundedBorder)
             Text("확인")
                 .asDefaultButtonStyle()
                 .asButton {
+                    isPlaying = false
+                    MusicKitManager.shared.pauseMusic()
                     isFullPresented.toggle()
                     if let currentSong = songs[safe: currentSongIndex] , let currentSongList = songList[safe: currentSongIndex] {
                         let isCorrect = inputSongName.localizedCaseInsensitiveContains(currentSong.attributes.answerSongName)
