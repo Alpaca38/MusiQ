@@ -25,6 +25,12 @@ struct ContentView: View {
                             Image(systemName: "doc.text.magnifyingglass")
                             Text("틀린 문제")
                         }
+                    
+                    MyChartView()
+                        .tabItem {
+                            Image(systemName: "chart.pie")
+                            Text("통계")
+                        }
                 }
                 .tint(.black)
             }

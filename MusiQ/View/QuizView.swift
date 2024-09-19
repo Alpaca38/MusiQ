@@ -66,7 +66,7 @@ struct QuizView: View {
     
     func inputSongField() -> some View {
         HStack {
-            TextField("노래 제목을 입력해주세요.", text: $inputSongName)
+            TextField("노래 제목을 입력해주세요.(띄어쓰기 없이)", text: $inputSongName)
                 .textFieldStyle(.roundedBorder)
             Text("확인")
                 .asDefaultButtonStyle()
