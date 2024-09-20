@@ -30,6 +30,7 @@
 		D1D43F602C9AE19000D65A84 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F5F2C9AE19000D65A84 /* Quiz.swift */; };
 		D1D43F622C9AE5BF00D65A84 /* WrongAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F612C9AE5BF00D65A84 /* WrongAnswerView.swift */; };
 		D1D43F642C9C3E5900D65A84 /* MyChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F632C9C3E5900D65A84 /* MyChartView.swift */; };
+		D1D43F662C9DB97300D65A84 /* HeaderStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F652C9DB97300D65A84 /* HeaderStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,6 +70,7 @@
 		D1D43F5F2C9AE19000D65A84 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		D1D43F612C9AE5BF00D65A84 /* WrongAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongAnswerView.swift; sourceTree = "<group>"; };
 		D1D43F632C9C3E5900D65A84 /* MyChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChartView.swift; sourceTree = "<group>"; };
+		D1D43F652C9DB97300D65A84 /* HeaderStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				D1D43F562C96F34D00D65A84 /* DefaultButtonStyle.swift */,
+				D1D43F652C9DB97300D65A84 /* HeaderStyle.swift */,
 			);
 			path = Modifier;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				D1D43F4F2C95509B00D65A84 /* QuizView.swift in Sources */,
 				D1D43F432C95215800D65A84 /* TopChart.swift in Sources */,
 				D1D43F642C9C3E5900D65A84 /* MyChartView.swift in Sources */,
+				D1D43F662C9DB97300D65A84 /* HeaderStyle.swift in Sources */,
 				D1D43F482C95495D00D65A84 /* NavigationLazyView.swift in Sources */,
 				D1D43F542C96EFE000D65A84 /* ButtonWrapper.swift in Sources */,
 				D1D43F572C96F34D00D65A84 /* DefaultButtonStyle.swift in Sources */,

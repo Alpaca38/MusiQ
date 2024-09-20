@@ -10,8 +10,18 @@ import Charts
 import RealmSwift
 
 struct MyChartView: View {
+    @ObservedResults(Quiz.self)
+    var data
+    
     var body: some View {
-        PieChartView()
+        ScrollView {
+            LazyVStack(spacing: 20) {
+                PieChartView()
+                BarChartView(data: data.where { $0.mode == Mode.song.name })
+//                BarChartView(data: data.where { $0.mode == Mode.artwork.name })
+            }
+        }
+        .padding()
     }
 }
 
@@ -21,6 +31,9 @@ struct PieChartView: View {
     
     var body: some View {
         if #available(iOS 17.0, *) {
+            Text("플레이한 장르")
+                .asHeaderStyle()
+            
             let genreCounts = genreCount(data: data)
             
             Chart(genreCounts, id: \.key) { genre, count in
@@ -55,6 +68,41 @@ struct PieChartView: View {
     func genreCount(data: Results<Quiz>) -> [(key: String, count: Int)] {
         let genreGroups = Dictionary(grouping: data, by: \.genre) // 장르별로 그룹화
         return genreGroups.map { (key: $0.key, count: $0.value.count) } // 각 그룹의 개수를 카운트
+    }
+}
+
+struct BarChartView: View {
+    var data: Results<Quiz>
+    
+    var body: some View {
+        Text(data.first?.mode == "노래 듣고 맞추기" ? "노래 듣고 맞추기 정답률" : "앨범 커버 보고 맞추기 정답률")
+            .asHeaderStyle()
+        
+        let genreCorrectRates = genreCorrectRate(data: data)
+        
+        Chart(genreCorrectRates, id: \.key) { genre, correctRate in
+            BarMark(
+                x: .value("Genre", genre),
+                y: .value("Correct Rate", correctRate)
+            )
+            .foregroundStyle(by: .value("Genre", genre))
+        }
+        .scaledToFit()
+        .chartLegend(alignment: .center, spacing: 16)
+    }
+    
+    // 장르별 정답률 계산 함수
+    func genreCorrectRate(data: Results<Quiz>) -> [(key: String, correctRate: Double)] {
+        let genreGroups = Dictionary(grouping: data, by: \.genre) // 장르별로 그룹화
+        
+        return genreGroups.map { (key: $0.key, correctRate: calculateCorrectRate(for: $0.value)) }
+    }
+    
+    // 각 장르의 정답률을 계산하는 함수
+    func calculateCorrectRate(for quizzes: [Quiz]) -> Double {
+        let total = quizzes.count
+        let correctCount = quizzes.filter { $0.isCorrect }.count
+        return total > 0 ? (Double(correctCount) / Double(total)) * 100 : 0.0
     }
 }
 //
