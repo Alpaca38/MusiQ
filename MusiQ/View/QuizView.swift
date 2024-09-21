@@ -8,6 +8,7 @@
 import SwiftUI
 import MusicKit
 import RealmSwift
+import Combine
 
 struct QuizView: View {
     let mode: Mode
@@ -21,6 +22,7 @@ struct QuizView: View {
     @State private var songList: MusicItemCollection<Song> = []
     @State private var isLoading = false
     @State private var isFullPresented = false
+    @State private var cancellable: AnyCancellable?
     
     @ObservedResults(Quiz.self)
     var quizList
@@ -73,6 +75,8 @@ struct QuizView: View {
                 .asButton {
                     isPlaying = false
                     MusicKitManager.shared.pauseMusic()
+                    cancellable?.cancel() // 타이머 캔슬
+                    
                     isFullPresented.toggle()
                     if let currentSong = songs[safe: currentSongIndex] , let currentSongList = songList[safe: currentSongIndex] {
                         let isCorrect = inputSongName.localizedCaseInsensitiveContains(currentSong.attributes.answerSongName)
@@ -86,10 +90,18 @@ struct QuizView: View {
     func togglePlay() {
         if isPlaying {
             MusicKitManager.shared.pauseMusic()
+            cancellable?.cancel()
         } else {
             Task {
                 let currentSong = songs[safe: currentSongIndex]
                 try await MusicKitManager.shared.playMusic(id: MusicItemID(currentSong?.id ?? ""))
+                cancellable = Timer.publish(every: 30, on: .main, in: .common)
+                            .autoconnect()
+                            .first()
+                            .sink { _ in
+                                MusicKitManager.shared.pauseMusic()
+                                isPlaying = false
+                            }
             }
         }
         isPlaying.toggle()
