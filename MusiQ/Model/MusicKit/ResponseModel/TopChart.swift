@@ -38,6 +38,10 @@ struct SongAttributes: Decodable {
         name.replacingOccurrences(of: " ", with: "")
             .replacingOccurrences(of: #"\s*\(feat\..*?\)"#, with: "", options: .regularExpression)
     }
+    
+    var answerArtistName: String {
+        artistName.replacingOccurrences(of: " ", with: "")
+    }
 }
 
 struct Artwork: Decodable {

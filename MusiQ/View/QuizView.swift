@@ -21,24 +21,30 @@ struct QuizView: View {
     @State private var songs: [SongData] = []
     @State private var songList: MusicItemCollection<Song> = []
     @State private var isLoading = false
-    @State private var isFullPresented = false
+    @State private var isSongPresented = false
+    @State private var isArtworkPresented = false
     @State private var cancellable: AnyCancellable?
     
     @ObservedResults(Quiz.self)
     var quizList
     
     var body: some View {
+        contentView()
+            .task {
+                await loadSongs()
+            }
+            .fullScreenCover(isPresented: $isSongPresented, content: {
+                createSongCheckView(isCorrect: checkSongNameCorrect())
+            })
+            .fullScreenCover(isPresented: $isArtworkPresented, content: {
+                createSongCheckView(isCorrect: checkArtistNameCorrect())
+            })
+    }
+    
+    @ViewBuilder
+    func contentView() -> some View {
         if mode.name == Mode.song.name {
             songView()
-                .task {
-                    await loadSongs()
-                }
-                .fullScreenCover(isPresented: $isFullPresented, content: {
-                    if let currentSong = songs[safe: currentSongIndex], let currentSongList = songList[safe: currentSongIndex] {
-                        let isCorrect = inputSongName.localizedCaseInsensitiveContains(currentSong.attributes.answerSongName)
-                        NavigationLazyView(SongCheckView(mode: mode, genre: genre, isCorrect: isCorrect, songData: currentSong, currentSongList: currentSongList, currentIndex: $currentSongIndex, inputSongName: $inputSongName))
-                    }
-                })
         } else {
             artworkView()
         }
@@ -58,12 +64,12 @@ struct QuizView: View {
     
     func playButton() -> some View {
         Image(systemName: isPlaying ? "pause.circle" : "play.circle")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 100, height: 100)
-                        .asButton {
-                            togglePlay()
-                        }
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 100, height: 100)
+            .asButton {
+                togglePlay()
+            }
     }
     
     func inputSongField() -> some View {
@@ -77,10 +83,10 @@ struct QuizView: View {
                     MusicKitManager.shared.pauseMusic()
                     cancellable?.cancel() // 타이머 캔슬
                     
-                    isFullPresented.toggle()
-                    if let currentSong = songs[safe: currentSongIndex] , let currentSongList = songList[safe: currentSongIndex] {
+                    isSongPresented.toggle()
+                    if let currentSong = songs[safe: currentSongIndex] {
                         let isCorrect = inputSongName.localizedCaseInsensitiveContains(currentSong.attributes.answerSongName)
-                        $quizList.append(Quiz(mode: mode.name, genre: genre.genreData.name, isCorrect: isCorrect, dataID: currentSong.id, artworkURL: currentSongList.artwork?.url(width: 50, height: 50)?.absoluteString, songName: currentSong.attributes.name, artistName: currentSong.attributes.artistName))
+                        saveHistory(isCorrect: isCorrect)
                     }
                 }
         }
@@ -96,46 +102,54 @@ struct QuizView: View {
                 let currentSong = songs[safe: currentSongIndex]
                 try await MusicKitManager.shared.playMusic(id: MusicItemID(currentSong?.id ?? ""))
                 cancellable = Timer.publish(every: 30, on: .main, in: .common)
-                            .autoconnect()
-                            .first()
-                            .sink { _ in
-                                MusicKitManager.shared.pauseMusic()
-                                isPlaying = false
-                            }
+                    .autoconnect()
+                    .first()
+                    .sink { _ in
+                        MusicKitManager.shared.pauseMusic()
+                        isPlaying = false
+                    }
             }
         }
         isPlaying.toggle()
     }
     
+    @ViewBuilder
     func artworkView() -> some View {
-        VStack(spacing: 40) {
-            AsyncImage(url: URL(string: "dummy")) { phase in
-                switch phase {
-                case .empty:
-                    ProgressView()
-                case .success(let image):
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                case .failure(_):
-                    Color.gray
-                @unknown default:
-                    Color.gray
+        if isLoading {
+            ProgressView("노래를 불러오는 중...")
+        } else {
+            VStack(spacing: 40) {
+                if let currentSongList = songList[safe: currentSongIndex], let artwork = currentSongList.artwork {
+                    ArtworkImage(artwork, width: 350)
+                        .clipShape(RoundedRectangle(cornerRadius: 25.0))
                 }
+                
+                inputArtistField()
             }
-            .clipShape(RoundedRectangle(cornerRadius: 25.0))
-            .frame(width: 350, height: 350)
-            
-            HStack {
-                TextField("가수 이름을 입력해주세요.", text: $inputArtistName)
-                    .textFieldStyle(.roundedBorder)
-                Text("확인")
-                    .asButton {
-                        print("정답 확인")
+        }
+    }
+    
+    func inputArtistField() -> some View {
+        HStack {
+            TextField("가수 이름을 입력해주세요.", text: $inputArtistName)
+                .textFieldStyle(.roundedBorder)
+            Text("확인")
+                .asButton {
+                    isArtworkPresented.toggle()
+                    if let currentSong = songs[safe: currentSongIndex] {
+                        let isCorrect = inputArtistName.localizedCaseInsensitiveContains(currentSong.attributes.answerArtistName)
+                        print(currentSong.attributes.answerArtistName)
+                        saveHistory(isCorrect: isCorrect)
                     }
-                    .asDefaultButtonStyle()
-            }
-            .padding()
+                }
+                .asDefaultButtonStyle()
+        }
+        .padding()
+    }
+    
+    func saveHistory(isCorrect: Bool) {
+        if let currentSong = songs[safe: currentSongIndex] , let currentSongList = songList[safe: currentSongIndex] {
+            $quizList.append(Quiz(mode: mode.name, genre: genre.genreData.name, isCorrect: isCorrect, dataID: currentSong.id, artworkURL: currentSongList.artwork?.url(width: 50, height: 50)?.absoluteString, songName: currentSong.attributes.name, artistName: currentSong.attributes.artistName))
         }
     }
     
@@ -149,6 +163,31 @@ struct QuizView: View {
             print(error)
         }
         isLoading = false
+    }
+    
+    @ViewBuilder
+    func createSongCheckView(isCorrect: Bool) -> some View {
+        if let currentSong = songs[safe: currentSongIndex],
+           let currentSongList = songList[safe: currentSongIndex] {
+            NavigationLazyView(SongCheckView(
+                mode: mode,
+                genre: genre,
+                isCorrect: isCorrect,
+                songData: currentSong,
+                currentSongList: currentSongList,
+                currentIndex: $currentSongIndex,
+                inputSongName: $inputSongName,
+                inputArtistName: $inputArtistName
+            ))
+        }
+    }
+    
+    func checkSongNameCorrect() -> Bool {
+        songs[safe: currentSongIndex].map { inputSongName.localizedCaseInsensitiveContains($0.attributes.answerSongName) } ?? false
+    }
+    
+    func checkArtistNameCorrect() -> Bool {
+        songs[safe: currentSongIndex].map { inputArtistName.localizedCaseInsensitiveContains($0.attributes.answerArtistName) } ?? false
     }
 }
 

@@ -16,6 +16,7 @@ struct SongCheckView: View {
     let currentSongList: Song
     @Binding var currentIndex: Int
     @Binding var inputSongName: String
+    @Binding var inputArtistName: String
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var rootPresentation: RootPresentation
     
@@ -54,6 +55,7 @@ struct SongCheckView: View {
                     if currentIndex < 9 {
                         currentIndex += 1
                         inputSongName = ""
+                        inputArtistName = ""
                         dismiss()
                     } else {
                         rootPresentation.reset()

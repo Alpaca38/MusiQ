@@ -18,7 +18,7 @@ struct MyChartView: View {
             LazyVStack(spacing: 20) {
                 PieChartView()
                 BarChartView(data: data.where { $0.mode == Mode.song.name })
-//                BarChartView(data: data.where { $0.mode == Mode.artwork.name })
+                BarChartView(data: data.where { $0.mode == Mode.artwork.name })
             }
         }
         .padding()
