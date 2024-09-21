@@ -13,6 +13,8 @@ struct WrongAnswerView: View {
     @ObservedResults(Quiz.self)
     var quizList
     
+    @State private var currentPlayingID: String?
+    
     var body: some View {
         if quizList.isEmpty {
             Text("틀린 문제가 없습니다.")
@@ -26,6 +28,9 @@ struct WrongAnswerView: View {
                                                         .compactMap { $0.value.first } // 틀린 문제 중복표시 방지
                         ForEach(uniqueQuizList, id: \.id) { item in
                             wrongAnswerCell(item)
+                                .asButton {
+                                    musicPlayback(item)
+                                }
                         }
                     }
                 }
@@ -62,5 +67,17 @@ struct WrongAnswerView: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    func musicPlayback(_ item: Quiz) {
+        if currentPlayingID == item.dataID { // 동일한 노래 클릭 시 노래 재생 정지
+            MusicKitManager.shared.pauseMusic()
+            currentPlayingID = nil
+        } else {
+            Task {
+                try await MusicKitManager.shared.playMusic(id: MusicItemID(item.dataID))
+            }
+            currentPlayingID = item.dataID
+        }
     }
 }

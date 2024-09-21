@@ -35,6 +35,7 @@ struct CardListView: View {
                                         .rotation3DEffect(.degrees(phase.value * 180), axis: (x: 0, y: 1, z: 0))
                                 }
                         }
+                        .containerRelativeFrame(.horizontal)
                     }
                 }
                 .scrollTargetLayout()
@@ -64,11 +65,11 @@ struct CardListView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 25.0)
                 .fill(.linearGradient(.init(colors: item.colors), startPoint: .top, endPoint: .bottom))
-                .frame(width: 200, height: 300)
+                .frame(width: 250, height: 350)
             Text(item.name)
                 .font(.title)
                 .bold()
-                .frame(width: 200)
+                .frame(width: 250)
                 .foregroundStyle(.black)
         }
     }
