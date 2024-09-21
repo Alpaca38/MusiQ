@@ -14,30 +14,51 @@ struct WrongAnswerView: View {
     var quizList
     
     @State private var currentPlayingID: String?
+    @State private var searchText = ""
+    
+    var filteredQuizList: LazyFilterSequence<Results<Quiz>> {
+        let filteredList = quizList.filter { !$0.isCorrect && (searchText.isEmpty || $0.songName.localizedCaseInsensitiveContains(searchText) || $0.artistName.localizedCaseInsensitiveContains(searchText)) }
+        return filteredList
+    }
     
     var body: some View {
-        if quizList.isEmpty {
-            Text("틀린 문제가 없습니다.")
-                .font(.title)
-                .bold()
-        } else {
-            NavigationView {
-                ScrollView {
-                    LazyVStack {
-                        let uniqueQuizList = Dictionary(grouping: quizList.filter { !$0.isCorrect }, by: \.dataID)
-                                                        .compactMap { $0.value.first } // 틀린 문제 중복표시 방지
-                        ForEach(uniqueQuizList, id: \.id) { item in
-                            wrongAnswerCell(item)
-                                .asButton {
-                                    musicPlayback(item)
-                                }
-                        }
-                    }
-                }
-                .navigationTitle("틀린 문제 목록")
-                .padding()
+        NavigationView {
+            if quizList.isEmpty {
+                Text("틀린 문제가 없습니다.")
+                    .font(.title)
+                    .bold()
+            } else {
+                wrongAnswerList()
             }
         }
+    }
+    
+    func wrongAnswerList() -> some View {
+        ScrollView {
+            if filteredQuizList.isEmpty {
+                GeometryReader { geometry in
+                    Text("검색 결과가 없습니다.")
+                        .font(.title)
+                        .bold()
+                        .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                }
+                .frame(height: 200)
+            } else {
+                LazyVStack {
+                    let uniqueQuizList = Dictionary(grouping: filteredQuizList, by: \.dataID)
+                        .compactMap { $0.value.first } // 틀린 문제 중복표시 방지
+                    ForEach(uniqueQuizList, id: \.id) { item in
+                        wrongAnswerCell(item)
+                            .asButton {
+                                musicPlayback(item)
+                            }
+                    }
+                }
+            }
+        }
+        .navigationTitle("틀린 문제 목록")
+        .padding()
+        .searchable(text: $searchText, prompt: "제목 또는 가수로 검색할 수 있습니다.")
     }
     
     func wrongAnswerCell(_ item: Quiz) -> some View {
