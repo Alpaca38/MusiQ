@@ -92,6 +92,7 @@ struct WrongAnswerView: View {
                 Text(item.artistName)
                     .font(.caption)
             }
+            .foregroundStyle(.text)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }

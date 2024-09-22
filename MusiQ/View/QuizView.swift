@@ -68,7 +68,7 @@ struct QuizView: View {
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: 100, height: 100)
-            .foregroundStyle(.black)
+            .foregroundStyle(.playButton)
             .asButton {
                 togglePlay()
             }

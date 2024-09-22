@@ -50,7 +50,7 @@ struct CategoryGridView: View {
             Text(item.genreData.name.localized)
                 .bold()
                 .font(.title)
-                .foregroundStyle(.black)
+                .foregroundStyle(.text)
         }
     }
 }

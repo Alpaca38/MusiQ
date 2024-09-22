@@ -32,7 +32,7 @@ struct ContentView: View {
                             Text("통계")
                         }
                 }
-                .tint(.black)
+                .tint(.teal)
             }
             .environmentObject(rootPresentation)
         }
