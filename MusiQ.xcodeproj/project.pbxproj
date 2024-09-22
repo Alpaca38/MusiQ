@@ -35,6 +35,7 @@
 		D1D43F6A2CA0201100D65A84 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D1D43F692CA0201100D65A84 /* Localizable.xcstrings */; };
 		D1D43F6D2CA0278300D65A84 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F6C2CA0278300D65A84 /* Extension+String.swift */; };
 		D1D43F6F2CA02FE200D65A84 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D1D43F6E2CA02FE200D65A84 /* InfoPlist.xcstrings */; };
+		D1D43F722CA038F700D65A84 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F712CA038F700D65A84 /* NetworkMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -79,6 +80,7 @@
 		D1D43F692CA0201100D65A84 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		D1D43F6C2CA0278300D65A84 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		D1D43F6E2CA02FE200D65A84 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		D1D43F712CA038F700D65A84 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 		D1D43F2D2C942C5300D65A84 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D1D43F702CA038E400D65A84 /* NetworkMonitor */,
 				D1D43F5E2C9AE17800D65A84 /* Realm */,
 				D1D43F502C95A69500D65A84 /* Quiz */,
 				D1D43F2E2C942C5E00D65A84 /* MusicKit */,
@@ -236,6 +239,14 @@
 				D1D43F6E2CA02FE200D65A84 /* InfoPlist.xcstrings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		D1D43F702CA038E400D65A84 /* NetworkMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				D1D43F712CA038F700D65A84 /* NetworkMonitor.swift */,
+			);
+			path = NetworkMonitor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,6 +351,7 @@
 				D1D43F1C2C9423E000D65A84 /* MusiQApp.swift in Sources */,
 				D1D43F5B2C97D71F00D65A84 /* SongCheckView.swift in Sources */,
 				D1D43F4A2C954B5100D65A84 /* QuizCategoryView.swift in Sources */,
+				D1D43F722CA038F700D65A84 /* NetworkMonitor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

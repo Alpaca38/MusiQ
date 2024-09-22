@@ -9,8 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var rootPresentation = RootPresentation()
+    @StateObject private var networkMonitor = NetworkMonitor()
     
     var body: some View {
+        if !networkMonitor.isConnected {
+            Text("네트워크 연결이 해제되었습니다. 네트워크 상태를 확인해주세요.")
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.red)
+                .foregroundColor(.white)
+                .font(.system(size: 14, weight: .bold))
+                .transition(.move(edge: .top))
+        }
+        
         if rootPresentation.isActive {
             NavigationStack {
                 TabView {

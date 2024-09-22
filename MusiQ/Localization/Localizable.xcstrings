@@ -96,6 +96,9 @@
         }
       }
     },
+    "네트워크 연결이 해제되었습니다. 네트워크 상태를 확인해주세요." : {
+
+    },
     "노래 듣고 맞추기" : {
       "extractionState" : "manual",
       "localizations" : {
