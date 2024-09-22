@@ -32,6 +32,9 @@
 		D1D43F642C9C3E5900D65A84 /* MyChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F632C9C3E5900D65A84 /* MyChartView.swift */; };
 		D1D43F662C9DB97300D65A84 /* HeaderStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F652C9DB97300D65A84 /* HeaderStyle.swift */; };
 		D1D43F682CA0097100D65A84 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F672CA0097100D65A84 /* BackgroundView.swift */; };
+		D1D43F6A2CA0201100D65A84 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D1D43F692CA0201100D65A84 /* Localizable.xcstrings */; };
+		D1D43F6D2CA0278300D65A84 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F6C2CA0278300D65A84 /* Extension+String.swift */; };
+		D1D43F6F2CA02FE200D65A84 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D1D43F6E2CA02FE200D65A84 /* InfoPlist.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -73,6 +76,9 @@
 		D1D43F632C9C3E5900D65A84 /* MyChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChartView.swift; sourceTree = "<group>"; };
 		D1D43F652C9DB97300D65A84 /* HeaderStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderStyle.swift; sourceTree = "<group>"; };
 		D1D43F672CA0097100D65A84 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		D1D43F692CA0201100D65A84 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		D1D43F6C2CA0278300D65A84 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
+		D1D43F6E2CA02FE200D65A84 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,7 @@
 				D1D43F2C2C942C3E00D65A84 /* View */,
 				D1D43F1B2C9423E000D65A84 /* MusiQApp.swift */,
 				D1D43F1F2C9423E100D65A84 /* Assets.xcassets */,
+				D1D43F6B2CA0201800D65A84 /* Localization */,
 				D1D43F212C9423E100D65A84 /* Preview Content */,
 			);
 			path = MusiQ;
@@ -192,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				D1D43F4C2C954FDC00D65A84 /* Extension+Color.swift */,
+				D1D43F6C2CA0278300D65A84 /* Extension+String.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -219,6 +227,15 @@
 				D1D43F5F2C9AE19000D65A84 /* Quiz.swift */,
 			);
 			path = Realm;
+			sourceTree = "<group>";
+		};
+		D1D43F6B2CA0201800D65A84 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				D1D43F692CA0201100D65A84 /* Localizable.xcstrings */,
+				D1D43F6E2CA02FE200D65A84 /* InfoPlist.xcstrings */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +284,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = D1D43F0F2C9423E000D65A84;
 			packageReferences = (
@@ -288,6 +306,8 @@
 			files = (
 				D1D43F232C9423E100D65A84 /* Preview Assets.xcassets in Resources */,
 				D1D43F202C9423E100D65A84 /* Assets.xcassets in Resources */,
+				D1D43F6F2CA02FE200D65A84 /* InfoPlist.xcstrings in Resources */,
+				D1D43F6A2CA0201100D65A84 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +336,7 @@
 				D1D43F372C946CA300D65A84 /* GenreSelection.swift in Sources */,
 				D1D43F452C952A3C00D65A84 /* QuizModeView.swift in Sources */,
 				D1D43F602C9AE19000D65A84 /* Quiz.swift in Sources */,
+				D1D43F6D2CA0278300D65A84 /* Extension+String.swift in Sources */,
 				D1D43F1C2C9423E000D65A84 /* MusiQApp.swift in Sources */,
 				D1D43F5B2C97D71F00D65A84 /* SongCheckView.swift in Sources */,
 				D1D43F4A2C954B5100D65A84 /* QuizCategoryView.swift in Sources */,
@@ -455,7 +476,7 @@
 				DEVELOPMENT_TEAM = 3R8ZWR4KRJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "음악 퀴즈 정보를 받아오기 위해 미디어 라이브러리 권한이 필요합니다.";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Media library permissions are required to receive music quiz information.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -491,7 +512,7 @@
 				DEVELOPMENT_TEAM = 3R8ZWR4KRJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "음악 퀴즈 정보를 받아오기 위해 미디어 라이브러리 권한이 필요합니다.";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Media library permissions are required to receive music quiz information.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

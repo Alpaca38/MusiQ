@@ -63,10 +63,10 @@ struct PieChartView: View {
                     angularInset: 2
                 )
                 .cornerRadius(5)
-                .foregroundStyle(by: .value("Category", genre))
+                .foregroundStyle(by: .value("Category", genre.localized))
             }
             .scaledToFit()
-            .chartLegend(alignment: .center, spacing: 16)
+            .chartLegend(alignment: .center, spacing: 8)
             .chartBackground { chartProxy in
               GeometryReader { geometry in
                   if let anchor = chartProxy.plotFrame {
@@ -102,13 +102,13 @@ struct BarChartView: View {
         
         Chart(genreCorrectRates, id: \.key) { genre, correctRate in
             BarMark(
-                x: .value("Genre", genre),
+                x: .value("Genre", genre.localized),
                 y: .value("Correct Rate", correctRate)
             )
-            .foregroundStyle(by: .value("Genre", genre))
+            .foregroundStyle(by: .value("Genre", genre.localized))
         }
         .scaledToFit()
-        .chartLegend(alignment: .center, spacing: 16)
+        .chartLegend(alignment: .center, spacing: 8)
     }
     
     // 장르별 정답률 계산 함수

@@ -42,7 +42,7 @@ struct CardListView: View {
             RoundedRectangle(cornerRadius: 25.0)
                 .fill(.linearGradient(.init(colors: item.colors), startPoint: .top, endPoint: .bottom))
                 .frame(width: 300, height: 400)
-            Text(item.name)
+            Text(item.localizedName)
                 .font(.title)
                 .bold()
                 .frame(width: 300)

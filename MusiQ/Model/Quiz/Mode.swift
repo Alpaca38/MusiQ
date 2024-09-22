@@ -28,4 +28,8 @@ enum Mode: CaseIterable, Hashable {
             [.purple, .red]
         }
     }
+    
+    var localizedName: String {
+        name.localized
+    }
 }

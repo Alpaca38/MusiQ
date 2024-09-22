@@ -47,7 +47,7 @@ struct CategoryGridView: View {
             RoundedRectangle(cornerRadius: 25)
                 .fill(Color.random())
                 .aspectRatio(1, contentMode: .fit)
-            Text(item.genreData.name)
+            Text(item.genreData.name.localized)
                 .bold()
                 .font(.title)
                 .foregroundStyle(.black)
