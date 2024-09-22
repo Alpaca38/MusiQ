@@ -31,6 +31,7 @@
 		D1D43F622C9AE5BF00D65A84 /* WrongAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F612C9AE5BF00D65A84 /* WrongAnswerView.swift */; };
 		D1D43F642C9C3E5900D65A84 /* MyChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F632C9C3E5900D65A84 /* MyChartView.swift */; };
 		D1D43F662C9DB97300D65A84 /* HeaderStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F652C9DB97300D65A84 /* HeaderStyle.swift */; };
+		D1D43F682CA0097100D65A84 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F672CA0097100D65A84 /* BackgroundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -71,6 +72,7 @@
 		D1D43F612C9AE5BF00D65A84 /* WrongAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongAnswerView.swift; sourceTree = "<group>"; };
 		D1D43F632C9C3E5900D65A84 /* MyChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChartView.swift; sourceTree = "<group>"; };
 		D1D43F652C9DB97300D65A84 /* HeaderStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderStyle.swift; sourceTree = "<group>"; };
+		D1D43F672CA0097100D65A84 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 				D1D43F5A2C97D71F00D65A84 /* SongCheckView.swift */,
 				D1D43F612C9AE5BF00D65A84 /* WrongAnswerView.swift */,
 				D1D43F632C9C3E5900D65A84 /* MyChartView.swift */,
+				D1D43F672CA0097100D65A84 /* BackgroundView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				D1D43F622C9AE5BF00D65A84 /* WrongAnswerView.swift in Sources */,
 				D1D43F3E2C94788E00D65A84 /* MusicKitAuthManager.swift in Sources */,
 				D1D43F522C95A6B900D65A84 /* Mode.swift in Sources */,
+				D1D43F682CA0097100D65A84 /* BackgroundView.swift in Sources */,
 				D1D43F1E2C9423E000D65A84 /* ContentView.swift in Sources */,
 				D1D43F302C942C6800D65A84 /* MusicKitManager.swift in Sources */,
 				D1D43F412C95212000D65A84 /* Genres.swift in Sources */,

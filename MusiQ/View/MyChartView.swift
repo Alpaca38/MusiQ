@@ -14,14 +14,34 @@ struct MyChartView: View {
     var data
     
     var body: some View {
-        ScrollView {
-            LazyVStack(spacing: 20) {
-                PieChartView()
-                BarChartView(data: data.where { $0.mode == Mode.song.name })
-                BarChartView(data: data.where { $0.mode == Mode.artwork.name })
+        contentView()
+            .applyBackground()
+    }
+    
+    @ViewBuilder
+    func contentView() -> some View {
+        if data.isEmpty {
+            Text("플레이 기록이 없습니다.")
+                .font(.title)
+                .bold()
+        } else {
+            ScrollView {
+                LazyVStack(spacing: 20) {
+                    PieChartView()
+                    
+                    let songData = data.where { $0.mode == Mode.artwork.name }
+                    if !songData.isEmpty {
+                        BarChartView(data: data.where { $0.mode == Mode.song.name })
+                    }
+                    
+                    let artworkData = data.where { $0.mode == Mode.artwork.name }
+                    if !artworkData.isEmpty {
+                        BarChartView(data: data.where { $0.mode == Mode.artwork.name })
+                    }
+                }
             }
+            .padding()
         }
-        .padding()
     }
 }
 

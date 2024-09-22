@@ -8,73 +8,48 @@
 import SwiftUI
 
 struct QuizModeView: View {
+    @State private var currentIndex = 0
+    
     var body: some View {
         NavigationView {
-            VStack {
-                CardListView()
-                    .navigationTitle("퀴즈 모드 선택")
-                    .padding(.bottom, 150)
-            }
+            CardListView(currentIndex: $currentIndex)
+                .navigationTitle("퀴즈 모드 선택")
+                .padding(.bottom, 150)
+                .applyBackground()
         }
     }
 }
 
 struct CardListView: View {
+    @Binding var currentIndex: Int
+    
     var body: some View {
-        if #available(iOS 17.0, *) {
-            ScrollView(.horizontal) {
-                HStack {
-                    ForEach(Mode.allCases, id: \.self) { item in
-                        NavigationLink {
-                            NavigationLazyView(QuizCategoryView(mode: item))
-                        } label: {
-                            cardView(item)
-                                .scrollTransition(topLeading: .interactive, bottomTrailing: .interactive, axis: .horizontal) { effect, phase in
-                                    effect.scaleEffect(1 - abs(phase.value))
-                                        .opacity(1 - abs(phase.value))
-                                        .rotation3DEffect(.degrees(phase.value * 180), axis: (x: 0, y: 1, z: 0))
-                                }
-                        }
-                        .containerRelativeFrame(.horizontal)
-                    }
-                }
-                .scrollTargetLayout()
-            }
-            .padding()
-            .scrollIndicators(.hidden)
-            .scrollTargetBehavior(.viewAligned)
-        } else {
-            ScrollView(.horizontal) {
-                HStack {
-                    ForEach(Mode.allCases, id: \.self) { item in
-                        NavigationLink {
-                            NavigationLazyView(QuizCategoryView(mode: item))
-                        } label: {
-                            cardView(item)
-                        }
-
-                    }
+        TabView(selection: $currentIndex) {
+            ForEach(Mode.allCases.indices, id: \.self) { index in
+                NavigationLink {
+                    NavigationLazyView(QuizCategoryView(mode: Mode.allCases[index]))
+                } label: {
+                    cardView(Mode.allCases[index])
                 }
             }
-            .padding()
-            .scrollIndicators(.hidden)
         }
+        .frame(width: 500, height: 600)
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
     }
     
     func cardView(_ item: Mode) -> some View {
         ZStack {
             RoundedRectangle(cornerRadius: 25.0)
                 .fill(.linearGradient(.init(colors: item.colors), startPoint: .top, endPoint: .bottom))
-                .frame(width: 250, height: 350)
+                .frame(width: 300, height: 400)
             Text(item.name)
                 .font(.title)
                 .bold()
-                .frame(width: 250)
-                .foregroundStyle(.black)
+                .frame(width: 300)
+                .foregroundStyle(.white)
         }
     }
 }
-
 //#Preview {
 //    QuizModeView()
 //}

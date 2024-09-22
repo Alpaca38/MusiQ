@@ -23,13 +23,19 @@ struct WrongAnswerView: View {
     
     var body: some View {
         NavigationView {
-            if quizList.isEmpty {
-                Text("틀린 문제가 없습니다.")
-                    .font(.title)
-                    .bold()
-            } else {
-                wrongAnswerList()
-            }
+            contentView()
+                .applyBackground()
+        }
+    }
+    
+    @ViewBuilder
+    func contentView() -> some View {
+        if quizList.isEmpty {
+            Text("틀린 문제가 없습니다.")
+                .font(.title)
+                .bold()
+        } else {
+            wrongAnswerList()
         }
     }
     

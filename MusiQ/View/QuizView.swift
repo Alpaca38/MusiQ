@@ -39,6 +39,7 @@ struct QuizView: View {
             .fullScreenCover(isPresented: $isArtworkPresented, content: {
                 createSongCheckView(isCorrect: checkArtistNameCorrect())
             })
+            .applyBackground()
     }
     
     @ViewBuilder

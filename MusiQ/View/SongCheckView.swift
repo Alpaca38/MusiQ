@@ -26,6 +26,7 @@ struct SongCheckView: View {
             songInfoView()
             answerCheckView()
         }
+        .applyBackground()
     }
     
     @ViewBuilder

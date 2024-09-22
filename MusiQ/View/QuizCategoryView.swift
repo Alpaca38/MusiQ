@@ -17,6 +17,7 @@ struct QuizCategoryView: View {
                 .padding()
                 .navigationTitle("장르 선택")
         }
+        .applyBackground()
     }
 }
 
