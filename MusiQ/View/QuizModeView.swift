@@ -8,23 +8,36 @@
 import SwiftUI
 
 struct QuizModeView: View {
-    @State private var currentIndex = 0
+    @StateObject var container: MVIContainer<QuizModeIntentProtocol, QuizModeStateProtocol>
+    private var state: QuizModeStateProtocol { container.model }
+    private var intent: QuizModeIntentProtocol { container.intent }
     
     var body: some View {
         NavigationView {
-            CardListView(currentIndex: $currentIndex)
-                .navigationTitle("퀴즈 모드 선택")
-                .padding(.bottom, 150)
-                .applyBackground()
+            CardListView(currentIndex: state.currentIndex,
+                         modes: state.modes,
+                         onSelect: { index in
+                intent.selectIndex(index)
+            })
+            .navigationTitle("퀴즈 모드 선택")
+            .padding(.bottom, 150)
+            .applyBackground()
         }
     }
 }
 
 struct CardListView: View {
-    @Binding var currentIndex: Int
+    let currentIndex: Int
+    let modes: [Mode]
+    let onSelect: (Int) -> Void
     
     var body: some View {
-        TabView(selection: $currentIndex) {
+        TabView(selection: Binding(
+            get: { currentIndex },
+            set: { newIndex in
+                onSelect(newIndex)
+            }
+        )) {
             ForEach(Mode.allCases.indices, id: \.self) { index in
                 NavigationLink {
                     NavigationLazyView(QuizCategoryView(mode: Mode.allCases[index]))
@@ -49,6 +62,18 @@ struct CardListView: View {
                 .foregroundStyle(.white)
         }
     }
+}
+
+extension QuizModeView {
+    static func build() -> some View {
+        let model = QuizModeModel()
+        let intent = QuizModeIntent(model: model)
+        let container = MVIContainer(intent: intent as QuizModeIntentProtocol,
+                                     model: model as QuizModeStateProtocol,
+                                     modelChangePublisher: model.objectWillChange)
+        return QuizModeView(container: container)
+    }
+    
 }
 //#Preview {
 //    QuizModeView()

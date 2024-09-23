@@ -19,44 +19,52 @@ struct ContentView: View {
     var body: some View {
         VStack {
             if !networkState.isConnected {
-                Text("네트워크 연결이 해제되었습니다. 네트워크 상태를 확인해주세요.")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.red)
-                    .foregroundColor(.white)
-                    .font(.system(size: 14, weight: .bold))
-                    .transition(.move(edge: .top))
+                networkAlertView()
             }
             
             if rootPresentationState.isActive {
-                NavigationStack {
-                    TabView {
-                        QuizModeView()
-                            .tabItem {
-                                Image(systemName: "house")
-                                Text("퀴즈")
-                            }
-                        
-                        WrongAnswerView()
-                            .tabItem {
-                                Image(systemName: "doc.text.magnifyingglass")
-                                Text("틀린 문제")
-                            }
-                        
-                        MyChartView()
-                            .tabItem {
-                                Image(systemName: "chart.pie")
-                                Text("통계")
-                            }
-                    }
-                    .tint(.teal)
-                }
+                rootView()
             }
         }
         .onAppear {
             networkIntent.checkNetwork()
         }
         .environmentObject(rootPresentationContainer)
+    }
+    
+    func networkAlertView() -> some View {
+        Text("네트워크 연결이 해제되었습니다. 네트워크 상태를 확인해주세요.")
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color.red)
+            .foregroundColor(.white)
+            .font(.system(size: 14, weight: .bold))
+            .transition(.move(edge: .top))
+    }
+    
+    func rootView() -> some View {
+        NavigationStack {
+            TabView {
+                QuizModeView.build()
+                    .tabItem {
+                        Image(systemName: "house")
+                        Text("퀴즈")
+                    }
+                
+                WrongAnswerView()
+                    .tabItem {
+                        Image(systemName: "doc.text.magnifyingglass")
+                        Text("틀린 문제")
+                    }
+                
+                MyChartView()
+                    .tabItem {
+                        Image(systemName: "chart.pie")
+                        Text("통계")
+                    }
+            }
+            .tint(.teal)
+        }
     }
 }
 

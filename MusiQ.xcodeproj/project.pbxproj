@@ -44,6 +44,8 @@
 		D1D43F832CA1364300D65A84 /* MVIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F822CA1364300D65A84 /* MVIContainer.swift */; };
 		D1D43F862CA1395900D65A84 /* RootPresentationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F852CA1395900D65A84 /* RootPresentationModel.swift */; };
 		D1D43F892CA13A3500D65A84 /* RootPresentationIntetn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F882CA13A3500D65A84 /* RootPresentationIntetn.swift */; };
+		D1D43F8C2CA1585A00D65A84 /* QuizModeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F8B2CA1585A00D65A84 /* QuizModeModel.swift */; };
+		D1D43F8F2CA159C300D65A84 /* QuizModeIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F8E2CA159C300D65A84 /* QuizModeIntent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -96,6 +98,8 @@
 		D1D43F822CA1364300D65A84 /* MVIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVIContainer.swift; sourceTree = "<group>"; };
 		D1D43F852CA1395900D65A84 /* RootPresentationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresentationModel.swift; sourceTree = "<group>"; };
 		D1D43F882CA13A3500D65A84 /* RootPresentationIntetn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresentationIntetn.swift; sourceTree = "<group>"; };
+		D1D43F8B2CA1585A00D65A84 /* QuizModeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModeModel.swift; sourceTree = "<group>"; };
+		D1D43F8E2CA159C300D65A84 /* QuizModeIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModeIntent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +179,7 @@
 		D1D43F2D2C942C5300D65A84 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D1D43F8A2CA1584A00D65A84 /* QuizMode */,
 				D1D43F842CA1394C00D65A84 /* RootPresentation */,
 				D1D43F702CA038E400D65A84 /* NetworkMonitor */,
 				D1D43F5E2C9AE17800D65A84 /* Realm */,
@@ -198,6 +203,7 @@
 		D1D43F3A2C94786500D65A84 /* Intent */ = {
 			isa = PBXGroup;
 			children = (
+				D1D43F8D2CA159BA00D65A84 /* QuizMode */,
 				D1D43F872CA13A2300D65A84 /* RootPresentation */,
 				D1D43F7E2CA1354000D65A84 /* NetworkMonitor */,
 			);
@@ -303,6 +309,22 @@
 				D1D43F882CA13A3500D65A84 /* RootPresentationIntetn.swift */,
 			);
 			path = RootPresentation;
+			sourceTree = "<group>";
+		};
+		D1D43F8A2CA1584A00D65A84 /* QuizMode */ = {
+			isa = PBXGroup;
+			children = (
+				D1D43F8B2CA1585A00D65A84 /* QuizModeModel.swift */,
+			);
+			path = QuizMode;
+			sourceTree = "<group>";
+		};
+		D1D43F8D2CA159BA00D65A84 /* QuizMode */ = {
+			isa = PBXGroup;
+			children = (
+				D1D43F8E2CA159C300D65A84 /* QuizModeIntent.swift */,
+			);
+			path = QuizMode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,6 +447,7 @@
 				D1D43F302C942C6800D65A84 /* MusicKitManager.swift in Sources */,
 				D1D43F412C95212000D65A84 /* Genres.swift in Sources */,
 				D1D43F4D2C954FDC00D65A84 /* Extension+Color.swift in Sources */,
+				D1D43F8C2CA1585A00D65A84 /* QuizModeModel.swift in Sources */,
 				D1D43F4F2C95509B00D65A84 /* QuizView.swift in Sources */,
 				D1D43F432C95215800D65A84 /* TopChart.swift in Sources */,
 				D1D43F642C9C3E5900D65A84 /* MyChartView.swift in Sources */,
@@ -438,6 +461,7 @@
 				D1D43F602C9AE19000D65A84 /* Quiz.swift in Sources */,
 				D1D43F6D2CA0278300D65A84 /* Extension+String.swift in Sources */,
 				D1D43F1C2C9423E000D65A84 /* MusiQApp.swift in Sources */,
+				D1D43F8F2CA159C300D65A84 /* QuizModeIntent.swift in Sources */,
 				D1D43F862CA1395900D65A84 /* RootPresentationModel.swift in Sources */,
 				D1D43F5B2C97D71F00D65A84 /* SongCheckView.swift in Sources */,
 				D1D43F4A2C954B5100D65A84 /* QuizCategoryView.swift in Sources */,

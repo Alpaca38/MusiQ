@@ -9,7 +9,6 @@ import SwiftUI
 import Combine
 
 final class MVIContainer<Intent, Model>: ObservableObject {
-        
     let intent: Intent
     let model: Model
 
