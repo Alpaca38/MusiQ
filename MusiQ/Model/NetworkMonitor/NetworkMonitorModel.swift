@@ -8,12 +8,14 @@
 import Foundation
 import Network
 
-final class NetworkMonitor: ObservableObject {
+final class NetworkMonitorModel: ObservableObject, NetworkStateProtocol {
     @Published var isConnected: Bool = true
     private let pathMonitor = NWPathMonitor()
-    private let monitorQueue = DispatchQueue(label: "NetworkMonitorQueue")
+    private let monitorQueue = DispatchQueue(label: "NetworkMonitorQueue")    
+}
 
-    init() {
+extension NetworkMonitorModel: NetworkActionsProtocol {
+    func checkConnection() {
         pathMonitor.pathUpdateHandler = { [weak self] path in
             guard let self = self else { return }
             DispatchQueue.main.async {
@@ -22,4 +24,12 @@ final class NetworkMonitor: ObservableObject {
         }
         pathMonitor.start(queue: monitorQueue)
     }
+}
+
+protocol NetworkStateProtocol {
+    var isConnected: Bool { get }
+}
+
+protocol NetworkActionsProtocol: AnyObject {
+    func checkConnection()
 }

@@ -18,7 +18,10 @@ struct SongCheckView: View {
     @Binding var inputSongName: String
     @Binding var inputArtistName: String
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var rootPresentation: RootPresentation
+    
+    @EnvironmentObject var rootPresentationContainer: MVIContainer<RootPresentationIntentProtocol, RootPresentationStateProtocol>
+    private var rootPresentationState: RootPresentationStateProtocol { rootPresentationContainer.model }
+    private var rootPresentationIntent: RootPresentationIntentProtocol { rootPresentationContainer.intent }
     
     var body: some View {
         VStack(spacing: 40) {
@@ -59,7 +62,7 @@ struct SongCheckView: View {
                         inputArtistName = ""
                         dismiss()
                     } else {
-                        rootPresentation.reset()
+                        rootPresentationIntent.resetView()
                     }
                 }
                 .asDefaultButtonStyle()

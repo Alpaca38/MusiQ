@@ -35,11 +35,15 @@
 		D1D43F6A2CA0201100D65A84 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D1D43F692CA0201100D65A84 /* Localizable.xcstrings */; };
 		D1D43F6D2CA0278300D65A84 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F6C2CA0278300D65A84 /* Extension+String.swift */; };
 		D1D43F6F2CA02FE200D65A84 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D1D43F6E2CA02FE200D65A84 /* InfoPlist.xcstrings */; };
-		D1D43F722CA038F700D65A84 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F712CA038F700D65A84 /* NetworkMonitor.swift */; };
+		D1D43F722CA038F700D65A84 /* NetworkMonitorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F712CA038F700D65A84 /* NetworkMonitorModel.swift */; };
 		D1D43F752CA1232900D65A84 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D1D43F742CA1232900D65A84 /* .gitignore */; };
 		D1D43F772CA1239000D65A84 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1D43F762CA1239000D65A84 /* GoogleService-Info.plist */; };
 		D1D43F7A2CA123F500D65A84 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = D1D43F792CA123F500D65A84 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		D1D43F7C2CA124F400D65A84 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D1D43F7B2CA124F400D65A84 /* FirebaseCrashlytics */; };
+		D1D43F802CA1355200D65A84 /* NetworkMonitorIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F7F2CA1355200D65A84 /* NetworkMonitorIntent.swift */; };
+		D1D43F832CA1364300D65A84 /* MVIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F822CA1364300D65A84 /* MVIContainer.swift */; };
+		D1D43F862CA1395900D65A84 /* RootPresentationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F852CA1395900D65A84 /* RootPresentationModel.swift */; };
+		D1D43F892CA13A3500D65A84 /* RootPresentationIntetn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F882CA13A3500D65A84 /* RootPresentationIntetn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -84,10 +88,14 @@
 		D1D43F692CA0201100D65A84 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		D1D43F6C2CA0278300D65A84 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		D1D43F6E2CA02FE200D65A84 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
-		D1D43F712CA038F700D65A84 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		D1D43F712CA038F700D65A84 /* NetworkMonitorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorModel.swift; sourceTree = "<group>"; };
 		D1D43F732CA110F500D65A84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D1D43F742CA1232900D65A84 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		D1D43F762CA1239000D65A84 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D1D43F7F2CA1355200D65A84 /* NetworkMonitorIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorIntent.swift; sourceTree = "<group>"; };
+		D1D43F822CA1364300D65A84 /* MVIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVIContainer.swift; sourceTree = "<group>"; };
+		D1D43F852CA1395900D65A84 /* RootPresentationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresentationModel.swift; sourceTree = "<group>"; };
+		D1D43F882CA13A3500D65A84 /* RootPresentationIntetn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresentationIntetn.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,11 +132,12 @@
 		D1D43F1A2C9423E000D65A84 /* MusiQ */ = {
 			isa = PBXGroup;
 			children = (
+				D1D43F812CA1363600D65A84 /* Container */,
 				D1D43F732CA110F500D65A84 /* Info.plist */,
 				D1D43F552C96F32500D65A84 /* Modifier */,
 				D1D43F4B2C954FD000D65A84 /* Extension */,
 				D1D43F462C95493700D65A84 /* Wrapper */,
-				D1D43F3A2C94786500D65A84 /* ViewModel */,
+				D1D43F3A2C94786500D65A84 /* Intent */,
 				D1D43F2D2C942C5300D65A84 /* Model */,
 				D1D43F2C2C942C3E00D65A84 /* View */,
 				D1D43F1B2C9423E000D65A84 /* MusiQApp.swift */,
@@ -166,6 +175,7 @@
 		D1D43F2D2C942C5300D65A84 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D1D43F842CA1394C00D65A84 /* RootPresentation */,
 				D1D43F702CA038E400D65A84 /* NetworkMonitor */,
 				D1D43F5E2C9AE17800D65A84 /* Realm */,
 				D1D43F502C95A69500D65A84 /* Quiz */,
@@ -185,11 +195,13 @@
 			path = MusicKit;
 			sourceTree = "<group>";
 		};
-		D1D43F3A2C94786500D65A84 /* ViewModel */ = {
+		D1D43F3A2C94786500D65A84 /* Intent */ = {
 			isa = PBXGroup;
 			children = (
+				D1D43F872CA13A2300D65A84 /* RootPresentation */,
+				D1D43F7E2CA1354000D65A84 /* NetworkMonitor */,
 			);
-			path = ViewModel;
+			path = Intent;
 			sourceTree = "<group>";
 		};
 		D1D43F3F2C95211200D65A84 /* ResponseModel */ = {
@@ -256,9 +268,41 @@
 		D1D43F702CA038E400D65A84 /* NetworkMonitor */ = {
 			isa = PBXGroup;
 			children = (
-				D1D43F712CA038F700D65A84 /* NetworkMonitor.swift */,
+				D1D43F712CA038F700D65A84 /* NetworkMonitorModel.swift */,
 			);
 			path = NetworkMonitor;
+			sourceTree = "<group>";
+		};
+		D1D43F7E2CA1354000D65A84 /* NetworkMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				D1D43F7F2CA1355200D65A84 /* NetworkMonitorIntent.swift */,
+			);
+			path = NetworkMonitor;
+			sourceTree = "<group>";
+		};
+		D1D43F812CA1363600D65A84 /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				D1D43F822CA1364300D65A84 /* MVIContainer.swift */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
+		D1D43F842CA1394C00D65A84 /* RootPresentation */ = {
+			isa = PBXGroup;
+			children = (
+				D1D43F852CA1395900D65A84 /* RootPresentationModel.swift */,
+			);
+			path = RootPresentation;
+			sourceTree = "<group>";
+		};
+		D1D43F872CA13A2300D65A84 /* RootPresentation */ = {
+			isa = PBXGroup;
+			children = (
+				D1D43F882CA13A3500D65A84 /* RootPresentationIntetn.swift */,
+			);
+			path = RootPresentation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,6 +421,7 @@
 				D1D43F522C95A6B900D65A84 /* Mode.swift in Sources */,
 				D1D43F682CA0097100D65A84 /* BackgroundView.swift in Sources */,
 				D1D43F1E2C9423E000D65A84 /* ContentView.swift in Sources */,
+				D1D43F892CA13A3500D65A84 /* RootPresentationIntetn.swift in Sources */,
 				D1D43F302C942C6800D65A84 /* MusicKitManager.swift in Sources */,
 				D1D43F412C95212000D65A84 /* Genres.swift in Sources */,
 				D1D43F4D2C954FDC00D65A84 /* Extension+Color.swift in Sources */,
@@ -389,12 +434,15 @@
 				D1D43F572C96F34D00D65A84 /* DefaultButtonStyle.swift in Sources */,
 				D1D43F372C946CA300D65A84 /* GenreSelection.swift in Sources */,
 				D1D43F452C952A3C00D65A84 /* QuizModeView.swift in Sources */,
+				D1D43F802CA1355200D65A84 /* NetworkMonitorIntent.swift in Sources */,
 				D1D43F602C9AE19000D65A84 /* Quiz.swift in Sources */,
 				D1D43F6D2CA0278300D65A84 /* Extension+String.swift in Sources */,
 				D1D43F1C2C9423E000D65A84 /* MusiQApp.swift in Sources */,
+				D1D43F862CA1395900D65A84 /* RootPresentationModel.swift in Sources */,
 				D1D43F5B2C97D71F00D65A84 /* SongCheckView.swift in Sources */,
 				D1D43F4A2C954B5100D65A84 /* QuizCategoryView.swift in Sources */,
-				D1D43F722CA038F700D65A84 /* NetworkMonitor.swift in Sources */,
+				D1D43F722CA038F700D65A84 /* NetworkMonitorModel.swift in Sources */,
+				D1D43F832CA1364300D65A84 /* MVIContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

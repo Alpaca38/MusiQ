@@ -147,7 +147,6 @@ struct QuizView: View {
                     isArtworkPresented.toggle()
                     if let currentSong = songs[safe: currentSongIndex] {
                         let isCorrect = inputArtistName.localizedCaseInsensitiveContains(currentSong.attributes.answerArtistName)
-                        print(currentSong.attributes.answerArtistName)
                         saveHistory(isCorrect: isCorrect)
                     }
                 }
