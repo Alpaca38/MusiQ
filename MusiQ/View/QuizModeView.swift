@@ -14,35 +14,25 @@ struct QuizModeView: View {
     
     var body: some View {
         NavigationView {
-            CardListView(currentIndex: state.currentIndex,
-                         modes: state.modes,
-                         onSelect: { index in
-                intent.selectIndex(index)
-            })
+            cardListView()
             .navigationTitle("퀴즈 모드 선택")
             .padding(.bottom, 150)
             .applyBackground()
         }
     }
-}
-
-struct CardListView: View {
-    let currentIndex: Int
-    let modes: [Mode]
-    let onSelect: (Int) -> Void
     
-    var body: some View {
+    func cardListView() -> some View {
         TabView(selection: Binding(
-            get: { currentIndex },
+            get: { state.currentIndex },
             set: { newIndex in
-                onSelect(newIndex)
+                intent.selectIndex(newIndex)
             }
         )) {
-            ForEach(Mode.allCases.indices, id: \.self) { index in
+            ForEach(state.modes.indices, id: \.self) { index in
                 NavigationLink {
-                    NavigationLazyView(QuizCategoryView(mode: Mode.allCases[index]))
+                    NavigationLazyView(QuizCategoryView(mode: state.modes[index]))
                 } label: {
-                    cardView(Mode.allCases[index])
+                    cardView(state.modes[index])
                 }
             }
         }
