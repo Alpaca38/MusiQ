@@ -81,6 +81,7 @@
 		D1D43F6C2CA0278300D65A84 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		D1D43F6E2CA02FE200D65A84 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		D1D43F712CA038F700D65A84 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		D1D43F732CA110F500D65A84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +115,7 @@
 		D1D43F1A2C9423E000D65A84 /* MusiQ */ = {
 			isa = PBXGroup;
 			children = (
+				D1D43F732CA110F500D65A84 /* Info.plist */,
 				D1D43F552C96F32500D65A84 /* Modifier */,
 				D1D43F4B2C954FD000D65A84 /* Extension */,
 				D1D43F462C95493700D65A84 /* Wrapper */,
@@ -488,6 +490,7 @@
 				DEVELOPMENT_TEAM = 3R8ZWR4KRJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MusiQ/Info.plist;
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Media library permissions are required to receive music quiz information.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -523,6 +526,7 @@
 				DEVELOPMENT_TEAM = 3R8ZWR4KRJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MusiQ/Info.plist;
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Media library permissions are required to receive music quiz information.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -25,6 +25,8 @@ struct QuizView: View {
     @State private var isArtworkPresented = false
     @State private var cancellable: AnyCancellable?
     
+    @FocusState private var isFocused: Bool
+    
     @ObservedResults(Quiz.self)
     var quizList
     
@@ -40,6 +42,9 @@ struct QuizView: View {
                 createSongCheckView(isCorrect: checkArtistNameCorrect())
             })
             .applyBackground()
+            .onTapGesture {
+                isFocused = false
+            }
     }
     
     @ViewBuilder
@@ -78,6 +83,7 @@ struct QuizView: View {
         HStack {
             TextField("제목을 띄어쓰기 없이 입력해주세요.", text: $inputSongName)
                 .textFieldStyle(.roundedBorder)
+                .focused($isFocused)
             Text("확인")
                 .asDefaultButtonStyle()
                 .asButton {
@@ -135,6 +141,7 @@ struct QuizView: View {
         HStack {
             TextField("가수 이름을 입력해주세요.", text: $inputArtistName)
                 .textFieldStyle(.roundedBorder)
+                .focused($isFocused)
             Text("확인")
                 .asButton {
                     isArtworkPresented.toggle()

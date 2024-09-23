@@ -97,7 +97,20 @@
       }
     },
     "네트워크 연결이 해제되었습니다. 네트워크 상태를 확인해주세요." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The network has been disconnected. Please check the network status."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "네트워크 연결이 해제되었습니다. 네트워크 상태를 확인해주세요."
+          }
+        }
+      }
     },
     "노래 듣고 맞추기" : {
       "extractionState" : "manual",
