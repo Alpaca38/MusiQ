@@ -13,7 +13,6 @@ struct WrongAnswerView: View {
     @ObservedResults(Quiz.self)
     var quizList
     
-    @State private var currentPlayingID: String?
     @State private var searchText = ""
     
     var filteredQuizList: LazyFilterSequence<Results<Quiz>> {
@@ -54,10 +53,7 @@ struct WrongAnswerView: View {
                     let uniqueQuizList = Dictionary(grouping: filteredQuizList, by: \.dataID)
                         .compactMap { $0.value.first } // 틀린 문제 중복표시 방지
                     ForEach(uniqueQuizList, id: \.id) { item in
-                        wrongAnswerCell(item)
-//                            .asButton {
-//                                musicPlayback(item)
-//                            }
+                        NavigationLazyView(WrongAnswerCell(item: item))
                     }
                 }
             }
@@ -66,8 +62,12 @@ struct WrongAnswerView: View {
         .padding()
         .searchable(text: $searchText, prompt: "제목 또는 가수로 검색할 수 있습니다.")
     }
+}
+
+private struct WrongAnswerCell: View {
+    let item: Quiz
     
-    func wrongAnswerCell(_ item: Quiz) -> some View {
+    var body: some View {
         HStack(spacing: 15) {
             AsyncImage(url: URL(string: item.artworkURL!)) { phase in
                 switch phase {
@@ -96,14 +96,4 @@ struct WrongAnswerView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
-//    
-//    func musicPlayback(_ item: Quiz) {
-//        if currentPlayingID == item.dataID { // 동일한 노래 클릭 시 노래 재생 정지
-//            SoundManager.shared.pauseSong()
-//            currentPlayingID = nil
-//        } else {
-//            SoundManager.shared.playSong(song: <#T##URL?#>)
-//            currentPlayingID = item.dataID
-//        }
-//    }
 }
