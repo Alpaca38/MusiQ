@@ -29,7 +29,7 @@ struct WrongAnswerView: View {
     
     @ViewBuilder
     func contentView() -> some View {
-        if quizList.isEmpty {
+        if quizList.where({ !$0.isCorrect }).isEmpty {
             Text("틀린 문제가 없습니다.")
                 .font(.title)
                 .bold()
@@ -52,7 +52,7 @@ struct WrongAnswerView: View {
                 LazyVStack {
                     let uniqueQuizList = Dictionary(grouping: filteredQuizList, by: \.dataID)
                         .compactMap { $0.value.first } // 틀린 문제 중복표시 방지
-                    ForEach(uniqueQuizList, id: \.id) { item in
+                    ForEach(Array(uniqueQuizList), id: \.dataID) { item in
                         NavigationLazyView(WrongAnswerCell(item: item))
                     }
                 }
