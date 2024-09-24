@@ -88,7 +88,7 @@ struct QuizView: View {
                 .asDefaultButtonStyle()
                 .asButton {
                     isPlaying = false
-                    MusicKitManager.shared.pauseMusic()
+                    SoundManager.shared.pauseSong()
                     cancellable?.cancel() // 타이머 캔슬
                     
                     isSongPresented.toggle()
@@ -103,17 +103,16 @@ struct QuizView: View {
     
     func togglePlay() {
         if isPlaying {
-            MusicKitManager.shared.pauseMusic()
+            SoundManager.shared.pauseSong()
             cancellable?.cancel()
         } else {
             Task {
-                let currentSong = songs[safe: currentSongIndex]
-                try await MusicKitManager.shared.playMusic(id: MusicItemID(currentSong?.id ?? ""))
+                let currentSongList = songList[safe: currentSongIndex]
+                SoundManager.shared.playSong(song: currentSongList?.previewAssets?.first?.url)
                 cancellable = Timer.publish(every: 30, on: .main, in: .common)
                     .autoconnect()
                     .first()
                     .sink { _ in
-                        MusicKitManager.shared.pauseMusic()
                         isPlaying = false
                     }
             }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D18B32C22CA2A1EF00E1C5A7 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B32C12CA2A1EF00E1C5A7 /* SoundManager.swift */; };
 		D1D43F1C2C9423E000D65A84 /* MusiQApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F1B2C9423E000D65A84 /* MusiQApp.swift */; };
 		D1D43F1E2C9423E000D65A84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F1D2C9423E000D65A84 /* ContentView.swift */; };
 		D1D43F202C9423E100D65A84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1D43F1F2C9423E100D65A84 /* Assets.xcassets */; };
@@ -63,6 +64,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D18B32C12CA2A1EF00E1C5A7 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		D1D43F182C9423E000D65A84 /* MusiQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusiQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D43F1B2C9423E000D65A84 /* MusiQApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusiQApp.swift; sourceTree = "<group>"; };
 		D1D43F1D2C9423E000D65A84 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				D1D43F5E2C9AE17800D65A84 /* Realm */,
 				D1D43F502C95A69500D65A84 /* Quiz */,
 				D1D43F2E2C942C5E00D65A84 /* MusicKit */,
+				D18B32C12CA2A1EF00E1C5A7 /* SoundManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				D1D43F4A2C954B5100D65A84 /* QuizCategoryView.swift in Sources */,
 				D1D43F722CA038F700D65A84 /* NetworkMonitorModel.swift in Sources */,
 				D1D43F832CA1364300D65A84 /* MVIContainer.swift in Sources */,
+				D18B32C22CA2A1EF00E1C5A7 /* SoundManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,7 +599,7 @@
 		D1D43F272C9423E100D65A84 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon 1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -633,7 +637,7 @@
 		D1D43F282C9423E100D65A84 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon 1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
