@@ -11,9 +11,8 @@ import RealmSwift
 import Combine
 
 struct QuizView: View {
-    let mode: Mode
-    let genre: GenreSelection
-    @Binding var currentSongIndex: Int
+    let categoryState: QuizCategoryStateProtocol
+    let categoryIntent: QuizCategoryIntentProtocol
     
     @State private var isPlaying = false
     @State private var inputSongName = ""
@@ -49,7 +48,7 @@ struct QuizView: View {
     
     @ViewBuilder
     func contentView() -> some View {
-        if mode.name == Mode.song.name {
+        if categoryState.mode.name == Mode.song.name {
             songView()
         } else {
             artworkView()
@@ -92,7 +91,7 @@ struct QuizView: View {
                     cancellable?.cancel() // 타이머 캔슬
                     
                     isSongPresented.toggle()
-                    if let currentSong = songs[safe: currentSongIndex] {
+                    if let currentSong = songs[safe: categoryState.currentSongIndex] {
                         let isCorrect = inputSongName.localizedCaseInsensitiveContains(currentSong.attributes.answerSongName)
                         saveHistory(isCorrect: isCorrect)
                     }
@@ -107,7 +106,7 @@ struct QuizView: View {
             cancellable?.cancel()
         } else {
             Task {
-                let currentSongList = songList[safe: currentSongIndex]
+                let currentSongList = songList[safe: categoryState.currentSongIndex]
                 SoundManager.shared.playSong(song: currentSongList?.previewAssets?.first?.url)
                 cancellable = Timer.publish(every: 30, on: .main, in: .common)
                     .autoconnect()
@@ -126,7 +125,7 @@ struct QuizView: View {
             ProgressView("노래를 불러오는 중...")
         } else {
             VStack(spacing: 40) {
-                if let currentSongList = songList[safe: currentSongIndex], let artwork = currentSongList.artwork {
+                if let currentSongList = songList[safe: categoryState.currentSongIndex], let artwork = currentSongList.artwork {
                     ArtworkImage(artwork, width: 350)
                         .clipShape(RoundedRectangle(cornerRadius: 25.0))
                 }
@@ -144,7 +143,7 @@ struct QuizView: View {
             Text("확인")
                 .asButton {
                     isArtworkPresented.toggle()
-                    if let currentSong = songs[safe: currentSongIndex] {
+                    if let currentSong = songs[safe: categoryState.currentSongIndex] {
                         let isCorrect = inputArtistName.localizedCaseInsensitiveContains(currentSong.attributes.answerArtistName)
                         saveHistory(isCorrect: isCorrect)
                     }
@@ -155,8 +154,8 @@ struct QuizView: View {
     }
     
     func saveHistory(isCorrect: Bool) {
-        if let currentSong = songs[safe: currentSongIndex] , let currentSongList = songList[safe: currentSongIndex] {
-            $quizList.append(Quiz(mode: mode.name, genre: genre.genreData.name, isCorrect: isCorrect, dataID: currentSong.id, artworkURL: currentSongList.artwork?.url(width: 50, height: 50)?.absoluteString, songName: currentSong.attributes.name, artistName: currentSong.attributes.artistName))
+        if let currentSong = songs[safe: categoryState.currentSongIndex] , let currentSongList = songList[safe: categoryState.currentSongIndex] {
+            $quizList.append(Quiz(mode: categoryState.mode.name, genre: categoryState.selectedGenre!.genreData.name, isCorrect: isCorrect, dataID: currentSong.id, artworkURL: currentSongList.artwork?.url(width: 50, height: 50)?.absoluteString, songName: currentSong.attributes.name, artistName: currentSong.attributes.artistName))
         }
     }
     
@@ -164,8 +163,8 @@ struct QuizView: View {
         isLoading = true
         await MusicKitAuthManager.shared.requestMusicAuthorization()
         do {
-            songs = try await MusicKitManager.shared.fetchTopChart(with: genre)
-            songList = try await MusicKitManager.shared.fetchCityTopChart(with: genre)
+            songs = try await MusicKitManager.shared.fetchTopChart(with: categoryState.selectedGenre!)
+            songList = try await MusicKitManager.shared.fetchCityTopChart(with: categoryState.selectedGenre!)
         } catch {
             print(error)
         }
@@ -174,15 +173,16 @@ struct QuizView: View {
     
     @ViewBuilder
     func createSongCheckView(isCorrect: Bool) -> some View {
-        if let currentSong = songs[safe: currentSongIndex],
-           let currentSongList = songList[safe: currentSongIndex] {
+        if let currentSong = songs[safe: categoryState.currentSongIndex],
+           let currentSongList = songList[safe: categoryState.currentSongIndex] {
             NavigationLazyView(SongCheckView(
-                mode: mode,
-                genre: genre,
+                mode: categoryState.mode,
+                genre: categoryState.selectedGenre!,
                 isCorrect: isCorrect,
                 songData: currentSong,
                 currentSongList: currentSongList,
-                currentIndex: $currentSongIndex,
+                currentIndex: categoryState.currentSongIndex,
+                categoryIntent: categoryIntent,
                 inputSongName: $inputSongName,
                 inputArtistName: $inputArtistName
             ))
@@ -190,11 +190,11 @@ struct QuizView: View {
     }
     
     func checkSongNameCorrect() -> Bool {
-        songs[safe: currentSongIndex].map { inputSongName.localizedCaseInsensitiveContains($0.attributes.answerSongName) } ?? false
+        songs[safe: categoryState.currentSongIndex].map { inputSongName.localizedCaseInsensitiveContains($0.attributes.answerSongName) } ?? false
     }
     
     func checkArtistNameCorrect() -> Bool {
-        songs[safe: currentSongIndex].map { inputArtistName.localizedCaseInsensitiveContains($0.attributes.answerArtistName) } ?? false
+        songs[safe: categoryState.currentSongIndex].map { inputArtistName.localizedCaseInsensitiveContains($0.attributes.answerArtistName) } ?? false
     }
 }
 

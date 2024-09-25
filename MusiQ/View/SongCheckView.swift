@@ -14,7 +14,8 @@ struct SongCheckView: View {
     let isCorrect: Bool
     let songData: SongData
     let currentSongList: Song
-    @Binding var currentIndex: Int
+    let currentIndex: Int
+    let categoryIntent: QuizCategoryIntentProtocol
     @Binding var inputSongName: String
     @Binding var inputArtistName: String
     @Environment(\.dismiss) var dismiss
@@ -57,7 +58,7 @@ struct SongCheckView: View {
             Text(currentIndex < 9 ? "다음" : "완료")
                 .asButton {
                     if currentIndex < 9 {
-                        currentIndex += 1
+                        categoryIntent.submitAnswer()
                         inputSongName = ""
                         inputArtistName = ""
                         dismiss()

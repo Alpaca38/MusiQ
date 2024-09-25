@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct QuizCategoryView: View {
-    @State private var currentSongIndex = 0
-    let mode: Mode
-    
+    @StateObject var container: MVIContainer<QuizCategoryIntentProtocol, QuizCategoryStateProtocol>
+    private var state: QuizCategoryStateProtocol { container.model }
+    private var intent: QuizCategoryIntentProtocol { container.intent }
+
     var body: some View {
         ScrollView {
-            CategoryGridView(mode: mode, currentSongIndex: $currentSongIndex)
+            CategoryGridView(state: state, intent: intent)
                 .padding()
                 .navigationTitle("장르 선택")
         }
@@ -22,9 +23,8 @@ struct QuizCategoryView: View {
 }
 
 struct CategoryGridView: View {
-    let mode: Mode
-    @Binding var currentSongIndex: Int
-    @State private var selectedGenre: GenreSelection?
+    let state: QuizCategoryStateProtocol
+    let intent: QuizCategoryIntentProtocol
     
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     
@@ -33,12 +33,12 @@ struct CategoryGridView: View {
             ForEach(GenreSelection.allCases, id: \.id) { item in
                 categoryItem(item)
                     .asButton {
-                        selectedGenre = item
+                        intent.categoryTapped(item)
                     }
             }
         })
-        .fullScreenCover(item: $selectedGenre, content: { genre in
-            NavigationLazyView(QuizView(mode: mode, genre: genre, currentSongIndex: $currentSongIndex))
+        .fullScreenCover(item: Binding.constant(state.selectedGenre), content: { genre in
+            NavigationLazyView(QuizView(categoryState: state, categoryIntent: intent))
         })
     }
     
@@ -52,6 +52,17 @@ struct CategoryGridView: View {
                 .font(.title)
                 .foregroundStyle(.text)
         }
+    }
+}
+
+extension QuizCategoryView {
+    static func build(_ mode: Mode) -> some View {
+        let model = QuizCategoryModel(mode: mode)
+        let intent = QuizCategoryIntent(model: model)
+        let container = MVIContainer(intent: intent as QuizCategoryIntentProtocol,
+                                     model: model as QuizCategoryStateProtocol,
+                                     modelChangePublisher: model.objectWillChange)
+        return QuizCategoryView(container: container)
     }
 }
 //

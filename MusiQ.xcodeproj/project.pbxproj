@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D18B32C22CA2A1EF00E1C5A7 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B32C12CA2A1EF00E1C5A7 /* SoundManager.swift */; };
+		D18B32CE2CA4502600E1C5A7 /* QuizCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B32CD2CA4502600E1C5A7 /* QuizCategoryModel.swift */; };
+		D18B32D12CA4510500E1C5A7 /* QuizCategoryIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B32D02CA4510500E1C5A7 /* QuizCategoryIntent.swift */; };
 		D1D43F1C2C9423E000D65A84 /* MusiQApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F1B2C9423E000D65A84 /* MusiQApp.swift */; };
 		D1D43F1E2C9423E000D65A84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F1D2C9423E000D65A84 /* ContentView.swift */; };
 		D1D43F202C9423E100D65A84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1D43F1F2C9423E100D65A84 /* Assets.xcassets */; };
@@ -65,6 +67,8 @@
 
 /* Begin PBXFileReference section */
 		D18B32C12CA2A1EF00E1C5A7 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		D18B32CD2CA4502600E1C5A7 /* QuizCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCategoryModel.swift; sourceTree = "<group>"; };
+		D18B32D02CA4510500E1C5A7 /* QuizCategoryIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCategoryIntent.swift; sourceTree = "<group>"; };
 		D1D43F182C9423E000D65A84 /* MusiQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusiQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D43F1B2C9423E000D65A84 /* MusiQApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusiQApp.swift; sourceTree = "<group>"; };
 		D1D43F1D2C9423E000D65A84 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -118,6 +122,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D18B32CC2CA4501500E1C5A7 /* QuizCategory */ = {
+			isa = PBXGroup;
+			children = (
+				D18B32CD2CA4502600E1C5A7 /* QuizCategoryModel.swift */,
+			);
+			path = QuizCategory;
+			sourceTree = "<group>";
+		};
+		D18B32CF2CA450FB00E1C5A7 /* QuizCategory */ = {
+			isa = PBXGroup;
+			children = (
+				D18B32D02CA4510500E1C5A7 /* QuizCategoryIntent.swift */,
+			);
+			path = QuizCategory;
+			sourceTree = "<group>";
+		};
 		D1D43F0F2C9423E000D65A84 = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +201,7 @@
 		D1D43F2D2C942C5300D65A84 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D18B32CC2CA4501500E1C5A7 /* QuizCategory */,
 				D1D43F8A2CA1584A00D65A84 /* QuizMode */,
 				D1D43F842CA1394C00D65A84 /* RootPresentation */,
 				D1D43F702CA038E400D65A84 /* NetworkMonitor */,
@@ -206,6 +227,7 @@
 		D1D43F3A2C94786500D65A84 /* Intent */ = {
 			isa = PBXGroup;
 			children = (
+				D18B32CF2CA450FB00E1C5A7 /* QuizCategory */,
 				D1D43F8D2CA159BA00D65A84 /* QuizMode */,
 				D1D43F872CA13A2300D65A84 /* RootPresentation */,
 				D1D43F7E2CA1354000D65A84 /* NetworkMonitor */,
@@ -453,6 +475,7 @@
 				D1D43F8C2CA1585A00D65A84 /* QuizModeModel.swift in Sources */,
 				D1D43F4F2C95509B00D65A84 /* QuizView.swift in Sources */,
 				D1D43F432C95215800D65A84 /* TopChart.swift in Sources */,
+				D18B32D12CA4510500E1C5A7 /* QuizCategoryIntent.swift in Sources */,
 				D1D43F642C9C3E5900D65A84 /* MyChartView.swift in Sources */,
 				D1D43F662C9DB97300D65A84 /* HeaderStyle.swift in Sources */,
 				D1D43F482C95495D00D65A84 /* NavigationLazyView.swift in Sources */,
@@ -470,6 +493,7 @@
 				D1D43F4A2C954B5100D65A84 /* QuizCategoryView.swift in Sources */,
 				D1D43F722CA038F700D65A84 /* NetworkMonitorModel.swift in Sources */,
 				D1D43F832CA1364300D65A84 /* MVIContainer.swift in Sources */,
+				D18B32CE2CA4502600E1C5A7 /* QuizCategoryModel.swift in Sources */,
 				D18B32C22CA2A1EF00E1C5A7 /* SoundManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

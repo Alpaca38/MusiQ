@@ -30,7 +30,7 @@ struct QuizModeView: View {
         )) {
             ForEach(state.modes.indices, id: \.self) { index in
                 NavigationLink {
-                    NavigationLazyView(QuizCategoryView(mode: state.modes[index]))
+                    NavigationLazyView(QuizCategoryView.build(state.modes[index]))
                 } label: {
                     cardView(state.modes[index])
                 }
