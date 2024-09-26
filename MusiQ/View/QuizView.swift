@@ -163,8 +163,9 @@ struct QuizView: View {
         isLoading = true
         await MusicKitAuthManager.shared.requestMusicAuthorization()
         do {
-            songs = try await MusicKitManager.shared.fetchTopChart(with: categoryState.selectedGenre!)
-            songList = try await MusicKitManager.shared.fetchCityTopChart(with: categoryState.selectedGenre!)
+            let random = Int.random(in: 0...90)
+            songs = try await MusicKitManager.shared.fetchTopChart(with: categoryState.selectedGenre!, offset: random)
+            songList = try await MusicKitManager.shared.fetchCityTopChart(with: categoryState.selectedGenre!, offset: random)
         } catch {
             print(error)
         }
