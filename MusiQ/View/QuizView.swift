@@ -60,8 +60,13 @@ struct QuizView: View {
         if isLoading {
             ProgressView("노래를 불러오는 중...")
         } else {
-            VStack(spacing: 100) {
-                playButton()
+            VStack(spacing: 50) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 25.0)
+                        .fill(.linearGradient(.init(colors: [.green, .blue]), startPoint: .top, endPoint: .bottom))
+                        .frame(width: 350, height: 350)
+                    playButton()
+                }
                 inputSongField()
             }
         }
