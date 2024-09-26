@@ -10,6 +10,9 @@
 		D18B32C22CA2A1EF00E1C5A7 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B32C12CA2A1EF00E1C5A7 /* SoundManager.swift */; };
 		D18B32CE2CA4502600E1C5A7 /* QuizCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B32CD2CA4502600E1C5A7 /* QuizCategoryModel.swift */; };
 		D18B32D12CA4510500E1C5A7 /* QuizCategoryIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B32D02CA4510500E1C5A7 /* QuizCategoryIntent.swift */; };
+		D18B32D72CA52FD200E1C5A7 /* CookieRun Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = D18B32D42CA52FD200E1C5A7 /* CookieRun Black.otf */; };
+		D18B32D82CA52FD200E1C5A7 /* CookieRun Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D18B32D52CA52FD200E1C5A7 /* CookieRun Regular.otf */; };
+		D18B32D92CA52FD200E1C5A7 /* CookieRun Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D18B32D62CA52FD200E1C5A7 /* CookieRun Bold.otf */; };
 		D1D43F1C2C9423E000D65A84 /* MusiQApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F1B2C9423E000D65A84 /* MusiQApp.swift */; };
 		D1D43F1E2C9423E000D65A84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F1D2C9423E000D65A84 /* ContentView.swift */; };
 		D1D43F202C9423E100D65A84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1D43F1F2C9423E100D65A84 /* Assets.xcassets */; };
@@ -69,6 +72,9 @@
 		D18B32C12CA2A1EF00E1C5A7 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		D18B32CD2CA4502600E1C5A7 /* QuizCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCategoryModel.swift; sourceTree = "<group>"; };
 		D18B32D02CA4510500E1C5A7 /* QuizCategoryIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCategoryIntent.swift; sourceTree = "<group>"; };
+		D18B32D42CA52FD200E1C5A7 /* CookieRun Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CookieRun Black.otf"; sourceTree = "<group>"; };
+		D18B32D52CA52FD200E1C5A7 /* CookieRun Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CookieRun Regular.otf"; sourceTree = "<group>"; };
+		D18B32D62CA52FD200E1C5A7 /* CookieRun Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CookieRun Bold.otf"; sourceTree = "<group>"; };
 		D1D43F182C9423E000D65A84 /* MusiQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusiQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D43F1B2C9423E000D65A84 /* MusiQApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusiQApp.swift; sourceTree = "<group>"; };
 		D1D43F1D2C9423E000D65A84 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -138,6 +144,24 @@
 			path = QuizCategory;
 			sourceTree = "<group>";
 		};
+		D18B32D22CA52FBE00E1C5A7 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				D18B32D32CA52FC500E1C5A7 /* Font */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		D18B32D32CA52FC500E1C5A7 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				D18B32D42CA52FD200E1C5A7 /* CookieRun Black.otf */,
+				D18B32D62CA52FD200E1C5A7 /* CookieRun Bold.otf */,
+				D18B32D52CA52FD200E1C5A7 /* CookieRun Regular.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		D1D43F0F2C9423E000D65A84 = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +182,7 @@
 		D1D43F1A2C9423E000D65A84 /* MusiQ */ = {
 			isa = PBXGroup;
 			children = (
+				D18B32D22CA52FBE00E1C5A7 /* Resource */,
 				D1D43F812CA1363600D65A84 /* Container */,
 				D1D43F732CA110F500D65A84 /* Info.plist */,
 				D1D43F552C96F32500D65A84 /* Modifier */,
@@ -424,9 +449,12 @@
 			files = (
 				D1D43F752CA1232900D65A84 /* .gitignore in Resources */,
 				D1D43F232C9423E100D65A84 /* Preview Assets.xcassets in Resources */,
+				D18B32D92CA52FD200E1C5A7 /* CookieRun Bold.otf in Resources */,
 				D1D43F202C9423E100D65A84 /* Assets.xcassets in Resources */,
 				D1D43F6F2CA02FE200D65A84 /* InfoPlist.xcstrings in Resources */,
 				D1D43F6A2CA0201100D65A84 /* Localizable.xcstrings in Resources */,
+				D18B32D82CA52FD200E1C5A7 /* CookieRun Regular.otf in Resources */,
+				D18B32D72CA52FD200E1C5A7 /* CookieRun Black.otf in Resources */,
 				D1D43F772CA1239000D65A84 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -638,7 +666,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -676,7 +704,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

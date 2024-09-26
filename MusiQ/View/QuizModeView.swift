@@ -46,10 +46,9 @@ struct QuizModeView: View {
                 .fill(.linearGradient(.init(colors: item.colors), startPoint: .top, endPoint: .bottom))
                 .frame(width: 300, height: 400)
             Text(item.localizedName)
-                .font(.title)
-                .bold()
+                .font(.custom("CookieRunOTF-Bold", size: 30))
                 .frame(width: 300)
-                .foregroundStyle(.white)
+                .foregroundStyle(.text)
         }
     }
 }

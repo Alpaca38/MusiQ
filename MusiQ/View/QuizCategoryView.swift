@@ -48,8 +48,7 @@ struct CategoryGridView: View {
                 .fill(Color.random())
                 .aspectRatio(1, contentMode: .fit)
             Text(item.genreData.name.localized)
-                .bold()
-                .font(.title)
+                .font(.custom("CookieRunOTF-Bold", size: 24))
                 .foregroundStyle(.text)
         }
     }
