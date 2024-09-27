@@ -38,7 +38,7 @@ struct CategoryGridView: View {
             }
         })
         .fullScreenCover(item: Binding.constant(state.selectedGenre), content: { genre in
-            NavigationLazyView(QuizView(categoryState: state, categoryIntent: intent))
+            NavigationLazyView(QuizView.build(state, intent))
         })
     }
     

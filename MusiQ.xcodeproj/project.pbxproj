@@ -13,6 +13,8 @@
 		D18B32D72CA52FD200E1C5A7 /* CookieRun Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = D18B32D42CA52FD200E1C5A7 /* CookieRun Black.otf */; };
 		D18B32D82CA52FD200E1C5A7 /* CookieRun Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D18B32D52CA52FD200E1C5A7 /* CookieRun Regular.otf */; };
 		D18B32D92CA52FD200E1C5A7 /* CookieRun Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D18B32D62CA52FD200E1C5A7 /* CookieRun Bold.otf */; };
+		D18B32DD2CA6B2FF00E1C5A7 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B32DC2CA6B2FF00E1C5A7 /* QuizModel.swift */; };
+		D18B32E02CA6B46600E1C5A7 /* QuizIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B32DF2CA6B46600E1C5A7 /* QuizIntent.swift */; };
 		D1D43F1C2C9423E000D65A84 /* MusiQApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F1B2C9423E000D65A84 /* MusiQApp.swift */; };
 		D1D43F1E2C9423E000D65A84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F1D2C9423E000D65A84 /* ContentView.swift */; };
 		D1D43F202C9423E100D65A84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1D43F1F2C9423E100D65A84 /* Assets.xcassets */; };
@@ -75,6 +77,8 @@
 		D18B32D42CA52FD200E1C5A7 /* CookieRun Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CookieRun Black.otf"; sourceTree = "<group>"; };
 		D18B32D52CA52FD200E1C5A7 /* CookieRun Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CookieRun Regular.otf"; sourceTree = "<group>"; };
 		D18B32D62CA52FD200E1C5A7 /* CookieRun Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CookieRun Bold.otf"; sourceTree = "<group>"; };
+		D18B32DC2CA6B2FF00E1C5A7 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
+		D18B32DF2CA6B46600E1C5A7 /* QuizIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizIntent.swift; sourceTree = "<group>"; };
 		D1D43F182C9423E000D65A84 /* MusiQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusiQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D43F1B2C9423E000D65A84 /* MusiQApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusiQApp.swift; sourceTree = "<group>"; };
 		D1D43F1D2C9423E000D65A84 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -160,6 +164,14 @@
 				D18B32D52CA52FD200E1C5A7 /* CookieRun Regular.otf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		D18B32DE2CA6B46100E1C5A7 /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				D18B32DF2CA6B46600E1C5A7 /* QuizIntent.swift */,
+			);
+			path = Quiz;
 			sourceTree = "<group>";
 		};
 		D1D43F0F2C9423E000D65A84 = {
@@ -252,6 +264,7 @@
 		D1D43F3A2C94786500D65A84 /* Intent */ = {
 			isa = PBXGroup;
 			children = (
+				D18B32DE2CA6B46100E1C5A7 /* Quiz */,
 				D18B32CF2CA450FB00E1C5A7 /* QuizCategory */,
 				D1D43F8D2CA159BA00D65A84 /* QuizMode */,
 				D1D43F872CA13A2300D65A84 /* RootPresentation */,
@@ -291,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				D1D43F512C95A6B900D65A84 /* Mode.swift */,
+				D18B32DC2CA6B2FF00E1C5A7 /* QuizModel.swift */,
 			);
 			path = Quiz;
 			sourceTree = "<group>";
@@ -498,6 +512,7 @@
 				D1D43F1E2C9423E000D65A84 /* ContentView.swift in Sources */,
 				D1D43F892CA13A3500D65A84 /* RootPresentationIntetn.swift in Sources */,
 				D1D43F302C942C6800D65A84 /* MusicKitManager.swift in Sources */,
+				D18B32DD2CA6B2FF00E1C5A7 /* QuizModel.swift in Sources */,
 				D1D43F412C95212000D65A84 /* Genres.swift in Sources */,
 				D1D43F4D2C954FDC00D65A84 /* Extension+Color.swift in Sources */,
 				D1D43F8C2CA1585A00D65A84 /* QuizModeModel.swift in Sources */,
@@ -512,6 +527,7 @@
 				D1D43F372C946CA300D65A84 /* GenreSelection.swift in Sources */,
 				D1D43F452C952A3C00D65A84 /* QuizModeView.swift in Sources */,
 				D1D43F802CA1355200D65A84 /* NetworkMonitorIntent.swift in Sources */,
+				D18B32E02CA6B46600E1C5A7 /* QuizIntent.swift in Sources */,
 				D1D43F602C9AE19000D65A84 /* Quiz.swift in Sources */,
 				D1D43F6D2CA0278300D65A84 /* Extension+String.swift in Sources */,
 				D1D43F1C2C9423E000D65A84 /* MusiQApp.swift in Sources */,

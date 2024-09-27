@@ -19,6 +19,7 @@ struct SongCheckView: View {
     @Binding var inputSongName: String
     @Binding var inputArtistName: String
     @Environment(\.dismiss) var dismiss
+    let quizIntent: QuizIntentProtocol
     
     @EnvironmentObject var rootPresentationContainer: MVIContainer<RootPresentationIntentProtocol, RootPresentationStateProtocol>
     private var rootPresentationState: RootPresentationStateProtocol { rootPresentationContainer.model }
@@ -59,9 +60,7 @@ struct SongCheckView: View {
                 .asButton {
                     if currentIndex < 9 {
                         categoryIntent.submitAnswer()
-                        inputSongName = ""
-                        inputArtistName = ""
-                        dismiss()
+                        quizIntent.dismiss()
                     } else {
                         rootPresentationIntent.resetView()
                     }
