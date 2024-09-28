@@ -11,22 +11,16 @@ import RealmSwift
 import Combine
 
 struct QuizView: View {
-    let categoryState: QuizCategoryStateProtocol
-    let categoryIntent: QuizCategoryIntentProtocol
-    
     @StateObject var container: MVIContainer<QuizIntentProtocol, QuizStateProtocol>
     private var state: QuizStateProtocol { container.model }
     private var intent: QuizIntentProtocol { container.intent }
     
     @FocusState private var isFocused: Bool
     
-    @ObservedResults(Quiz.self)
-    var quizList
-    
     var body: some View {
         contentView()
             .task {
-                intent.loadSongs(categoryState.selectedGenre!)
+                intent.loadSongs(state.categoryState.selectedGenre!)
             }
             .applyBackground()
             .onTapGesture {
@@ -40,7 +34,7 @@ struct QuizView: View {
         case .loading:
             ProgressView("노래를 불러오는 중...")
         case .content(let songs, let songList):
-            if categoryState.mode.name == Mode.song.name {
+            if state.categoryState.mode.name == Mode.song.name {
                 songView(songs: songs, songList: songList)
                     .fullScreenCover(isPresented: Binding.constant(state.isSongPresented), content: {
                         createSongCheckView(songs: songs, songList: songList, isCorrect: checkSongNameCorrect(songs: songs))
@@ -63,7 +57,7 @@ struct QuizView: View {
                 RoundedRectangle(cornerRadius: 25.0)
                     .fill(.linearGradient(.init(colors: [.green, .blue]), startPoint: .top, endPoint: .bottom))
                     .frame(width: 350, height: 350)
-                playButton(songList[categoryState.currentSongIndex].previewAssets?.first?.url)
+                playButton(songList[state.categoryState.currentSongIndex].previewAssets?.first?.url)
             }
             inputSongField(songs: songs, songList: songList)
         }
@@ -94,7 +88,7 @@ struct QuizView: View {
                 .asDefaultButtonStyle()
                 .asButton {
                     intent.checkSongName(state.isPlaying)
-                    saveHistory(songs: songs, songList: songList, isCorrect: checkSongNameCorrect(songs: songs))
+                    intent.saveHistory(songs: songs, songList: songList, isCorrect: checkSongNameCorrect(songs: songs))
                 }
         }
         .padding()
@@ -103,7 +97,7 @@ struct QuizView: View {
     @ViewBuilder
     func artworkView(songs: [SongData], songList: MusicItemCollection<Song>) -> some View {
         VStack(spacing: 40) {
-            if let currentSongList = songList[safe: categoryState.currentSongIndex], let artwork = currentSongList.artwork {
+            if let currentSongList = songList[safe: state.categoryState.currentSongIndex], let artwork = currentSongList.artwork {
                 ArtworkImage(artwork, width: 350)
                     .clipShape(RoundedRectangle(cornerRadius: 25.0))
             }
@@ -125,31 +119,25 @@ struct QuizView: View {
             Text("확인")
                 .asButton {
                     intent.checkArtistName()
-                    saveHistory(songs: songs, songList: songList, isCorrect: checkArtistNameCorrect(songs: songs))
+                    intent.saveHistory(songs: songs, songList: songList, isCorrect: checkArtistNameCorrect(songs: songs))
                 }
                 .asDefaultButtonStyle()
         }
         .padding()
     }
     
-    func saveHistory(songs: [SongData], songList: MusicItemCollection<Song>, isCorrect: Bool) {
-        if let currentSong = songs[safe: categoryState.currentSongIndex] , let currentSongList = songList[safe: categoryState.currentSongIndex] {
-            $quizList.append(Quiz(mode: categoryState.mode.name, genre: categoryState.selectedGenre!.genreData.name, isCorrect: isCorrect, dataID: currentSong.id, artworkURL: currentSongList.artwork?.url(width: 50, height: 50)?.absoluteString, songName: currentSong.attributes.name, artistName: currentSong.attributes.artistName))
-        }
-    }
-    
     @ViewBuilder
     func createSongCheckView(songs: [SongData], songList: MusicItemCollection<Song>, isCorrect: Bool) -> some View {
-        if let currentSong = songs[safe: categoryState.currentSongIndex],
-           let currentSongList = songList[safe: categoryState.currentSongIndex] {
+        if let currentSong = songs[safe: state.categoryState.currentSongIndex],
+           let currentSongList = songList[safe: state.categoryState.currentSongIndex] {
             NavigationLazyView(SongCheckView(
-                mode: categoryState.mode,
-                genre: categoryState.selectedGenre!,
+                mode: state.categoryState.mode,
+                genre: state.categoryState.selectedGenre!,
                 isCorrect: isCorrect,
                 songData: currentSong,
                 currentSongList: currentSongList,
-                currentIndex: categoryState.currentSongIndex,
-                categoryIntent: categoryIntent,
+                currentIndex: state.categoryState.currentSongIndex,
+                categoryIntent: state.categoryIntent,
                 inputSongName: Binding.constant(state.inputSongName),
                 inputArtistName: Binding.constant(state.inputArtistName),
                 quizIntent: intent
@@ -158,22 +146,22 @@ struct QuizView: View {
     }
     
     func checkSongNameCorrect(songs: [SongData]) -> Bool {
-        songs[safe: categoryState.currentSongIndex].map { state.inputSongName.localizedCaseInsensitiveContains($0.attributes.answerSongName) } ?? false
+        songs[safe: state.categoryState.currentSongIndex].map { state.inputSongName.localizedCaseInsensitiveContains($0.attributes.answerSongName) } ?? false
     }
     
     func checkArtistNameCorrect(songs: [SongData]) -> Bool {
-        songs[safe: categoryState.currentSongIndex].map { state.inputArtistName.localizedCaseInsensitiveContains($0.attributes.answerArtistName) } ?? false
+        songs[safe: state.categoryState.currentSongIndex].map { state.inputArtistName.localizedCaseInsensitiveContains($0.attributes.answerArtistName) } ?? false
     }
 }
 
 extension QuizView {
     static func build(_ categoryState: QuizCategoryStateProtocol, _ categoryIntent: QuizCategoryIntentProtocol) -> some View {
-        let model = QuizModel()
+        let model = QuizModel(categoryState: categoryState, categoryIntent: categoryIntent)
         let intent = QuizIntent(model: model)
         let container = MVIContainer(intent: intent as QuizIntentProtocol,
                                      model: model as QuizStateProtocol,
                                      modelChangePublisher: model.objectWillChange)
-        return QuizView(categoryState: categoryState, categoryIntent: categoryIntent, container: container)
+        return QuizView(container: container)
     }
 }
 

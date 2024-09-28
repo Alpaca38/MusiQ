@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MusicKit
 
 final class QuizIntent: QuizIntentProtocol {
     private weak var model: QuizActionsProtocol?
@@ -70,6 +71,10 @@ final class QuizIntent: QuizIntentProtocol {
     func updateArtistField(_ input: String) {
         model?.updateArtistName(input)
     }
+    
+    func saveHistory(songs: [SongData], songList: MusicItemCollection<Song>, isCorrect: Bool) {
+        model?.saveHistory(songs: songs, songList: songList, isCorrect: isCorrect)
+    }
 }
 
 protocol QuizIntentProtocol {
@@ -81,4 +86,5 @@ protocol QuizIntentProtocol {
     func dismiss()
     func updateSongField(_ input: String)
     func updateArtistField(_ input: String)
+    func saveHistory(songs: [SongData], songList: MusicItemCollection<Song>, isCorrect: Bool)
 }
