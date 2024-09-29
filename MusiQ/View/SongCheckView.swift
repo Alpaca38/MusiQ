@@ -16,9 +16,6 @@ struct SongCheckView: View {
     let currentSongList: Song
     let currentIndex: Int
     let categoryIntent: QuizCategoryIntentProtocol
-    @Binding var inputSongName: String
-    @Binding var inputArtistName: String
-    @Environment(\.dismiss) var dismiss
     let quizIntent: QuizIntentProtocol
     
     @EnvironmentObject var rootPresentationContainer: MVIContainer<RootPresentationIntentProtocol, RootPresentationStateProtocol>

@@ -7,8 +7,6 @@
 
 import SwiftUI
 import MusicKit
-import RealmSwift
-import Combine
 
 struct QuizView: View {
     @StateObject var container: MVIContainer<QuizIntentProtocol, QuizStateProtocol>
@@ -138,8 +136,6 @@ struct QuizView: View {
                 currentSongList: currentSongList,
                 currentIndex: state.categoryState.currentSongIndex,
                 categoryIntent: state.categoryIntent,
-                inputSongName: Binding.constant(state.inputSongName),
-                inputArtistName: Binding.constant(state.inputArtistName),
                 quizIntent: intent
             ))
         }
