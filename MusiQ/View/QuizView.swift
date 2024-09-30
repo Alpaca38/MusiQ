@@ -128,7 +128,7 @@ struct QuizView: View {
     func createSongCheckView(songs: [SongData], songList: MusicItemCollection<Song>, isCorrect: Bool) -> some View {
         if let currentSong = songs[safe: state.categoryState.currentSongIndex],
            let currentSongList = songList[safe: state.categoryState.currentSongIndex] {
-            NavigationLazyView(SongCheckView(
+            NavigationLazyView(SongCheckView.build(
                 mode: state.categoryState.mode,
                 genre: state.categoryState.selectedGenre!,
                 isCorrect: isCorrect,

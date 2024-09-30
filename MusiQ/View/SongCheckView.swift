@@ -9,14 +9,9 @@ import SwiftUI
 import MusicKit
 
 struct SongCheckView: View {
-    let mode: Mode
-    let genre: GenreSelection
-    let isCorrect: Bool
-    let songData: SongData
-    let currentSongList: Song
-    let currentIndex: Int
-    let categoryIntent: QuizCategoryIntentProtocol
-    let quizIntent: QuizIntentProtocol
+    @StateObject var container: MVIContainer<SongCheckIntentProtocol, SongCheckStateProtocol>
+    private var state: SongCheckStateProtocol { container.model }
+    private var intent: SongCheckIntentProtocol { container.intent }
     
     @EnvironmentObject var rootPresentationContainer: MVIContainer<RootPresentationIntentProtocol, RootPresentationStateProtocol>
     private var rootPresentationState: RootPresentationStateProtocol { rootPresentationContainer.model }
@@ -33,7 +28,7 @@ struct SongCheckView: View {
     
     @ViewBuilder
     func artworkView() -> some View {
-        if let artwork = currentSongList.artwork {
+        if let artwork = state.currentSongList.artwork {
             ArtworkImage(artwork, width: 350)
                 .clipShape(RoundedRectangle(cornerRadius: 25.0))
         }
@@ -41,29 +36,40 @@ struct SongCheckView: View {
     
     func songInfoView() -> some View {
         VStack {
-            Text(songData.attributes.name)
+            Text(state.songData.attributes.name)
                 .font(.title)
                 .bold()
-            Text(songData.attributes.artistName)
+            Text(state.songData.attributes.artistName)
                 .font(.caption)
         }
     }
     
     func answerCheckView() -> some View {
         VStack {
-            Text(isCorrect ? "정답" : "오답")
+            Text(state.isCorrect ? "정답" : "오답")
                 .bold()
-            Text(currentIndex < 9 ? "다음" : "완료")
+            Text(state.currentIndex < 9 ? "다음" : "완료")
                 .asButton {
-                    if currentIndex < 9 {
-                        categoryIntent.submitAnswer()
-                        quizIntent.dismiss()
+                    if state.currentIndex < 9 {
+                        state.categoryIntent.submitAnswer()
+                        state.quizIntent.dismiss()
                     } else {
                         rootPresentationIntent.resetView()
                     }
                 }
                 .asDefaultButtonStyle()
         }
+    }
+}
+
+extension SongCheckView {
+    static func build(mode: Mode, genre: GenreSelection, isCorrect: Bool, songData: SongData, currentSongList: Song, currentIndex: Int, categoryIntent: any QuizCategoryIntentProtocol, quizIntent: QuizIntentProtocol) -> some View {
+        let model = SongCheckModel(mode: mode, genre: genre, isCorrect: isCorrect, songData: songData, currentSongList: currentSongList, currentIndex: currentIndex, categoryIntent: categoryIntent, quizIntent: quizIntent)
+        let intent = SongCheckIntent(model: model)
+        let container = MVIContainer(intent: intent as SongCheckIntentProtocol,
+                                     model: model as SongCheckStateProtocol,
+                                     modelChangePublisher: model.objectWillChange)
+        return SongCheckView(container: container)
     }
 }
 
