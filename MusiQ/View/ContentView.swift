@@ -51,7 +51,7 @@ struct ContentView: View {
                         Text("퀴즈")
                     }
                 
-                WrongAnswerView()
+                WrongAnswerView.build()
                     .tabItem {
                         Image(systemName: "doc.text.magnifyingglass")
                         Text("틀린 문제")

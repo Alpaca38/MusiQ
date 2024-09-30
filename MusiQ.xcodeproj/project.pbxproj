@@ -17,6 +17,8 @@
 		D18B32E02CA6B46600E1C5A7 /* QuizIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B32DF2CA6B46600E1C5A7 /* QuizIntent.swift */; };
 		D18B32FD2CAA6E8800E1C5A7 /* SongCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B32FC2CAA6E8800E1C5A7 /* SongCheckModel.swift */; };
 		D18B33002CAA6FCD00E1C5A7 /* SongCheckIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B32FF2CAA6FCD00E1C5A7 /* SongCheckIntent.swift */; };
+		D18B33032CAA76E700E1C5A7 /* WrongAnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B33022CAA76E700E1C5A7 /* WrongAnswerModel.swift */; };
+		D18B33062CAA79B600E1C5A7 /* WrongAnswerIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B33052CAA79B600E1C5A7 /* WrongAnswerIntent.swift */; };
 		D1D43F1C2C9423E000D65A84 /* MusiQApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F1B2C9423E000D65A84 /* MusiQApp.swift */; };
 		D1D43F1E2C9423E000D65A84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D43F1D2C9423E000D65A84 /* ContentView.swift */; };
 		D1D43F202C9423E100D65A84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1D43F1F2C9423E100D65A84 /* Assets.xcassets */; };
@@ -83,6 +85,8 @@
 		D18B32DF2CA6B46600E1C5A7 /* QuizIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizIntent.swift; sourceTree = "<group>"; };
 		D18B32FC2CAA6E8800E1C5A7 /* SongCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCheckModel.swift; sourceTree = "<group>"; };
 		D18B32FF2CAA6FCD00E1C5A7 /* SongCheckIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCheckIntent.swift; sourceTree = "<group>"; };
+		D18B33022CAA76E700E1C5A7 /* WrongAnswerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongAnswerModel.swift; sourceTree = "<group>"; };
+		D18B33052CAA79B600E1C5A7 /* WrongAnswerIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongAnswerIntent.swift; sourceTree = "<group>"; };
 		D1D43F182C9423E000D65A84 /* MusiQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusiQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D43F1B2C9423E000D65A84 /* MusiQApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusiQApp.swift; sourceTree = "<group>"; };
 		D1D43F1D2C9423E000D65A84 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -194,6 +198,22 @@
 			path = SongCheck;
 			sourceTree = "<group>";
 		};
+		D18B33012CAA76DE00E1C5A7 /* WrongAnswer */ = {
+			isa = PBXGroup;
+			children = (
+				D18B33022CAA76E700E1C5A7 /* WrongAnswerModel.swift */,
+			);
+			path = WrongAnswer;
+			sourceTree = "<group>";
+		};
+		D18B33042CAA797200E1C5A7 /* WrongAnswer */ = {
+			isa = PBXGroup;
+			children = (
+				D18B33052CAA79B600E1C5A7 /* WrongAnswerIntent.swift */,
+			);
+			path = WrongAnswer;
+			sourceTree = "<group>";
+		};
 		D1D43F0F2C9423E000D65A84 = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +278,7 @@
 		D1D43F2D2C942C5300D65A84 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D18B33012CAA76DE00E1C5A7 /* WrongAnswer */,
 				D18B32FB2CAA6E8000E1C5A7 /* SongCheck */,
 				D18B32CC2CA4501500E1C5A7 /* QuizCategory */,
 				D1D43F8A2CA1584A00D65A84 /* QuizMode */,
@@ -285,6 +306,7 @@
 		D1D43F3A2C94786500D65A84 /* Intent */ = {
 			isa = PBXGroup;
 			children = (
+				D18B33042CAA797200E1C5A7 /* WrongAnswer */,
 				D18B32FE2CAA6FC200E1C5A7 /* SongCheck */,
 				D18B32DE2CA6B46100E1C5A7 /* Quiz */,
 				D18B32CF2CA450FB00E1C5A7 /* QuizCategory */,
@@ -538,7 +560,9 @@
 				D18B32DD2CA6B2FF00E1C5A7 /* QuizModel.swift in Sources */,
 				D1D43F412C95212000D65A84 /* Genres.swift in Sources */,
 				D1D43F4D2C954FDC00D65A84 /* Extension+Color.swift in Sources */,
+				D18B33032CAA76E700E1C5A7 /* WrongAnswerModel.swift in Sources */,
 				D1D43F8C2CA1585A00D65A84 /* QuizModeModel.swift in Sources */,
+				D18B33062CAA79B600E1C5A7 /* WrongAnswerIntent.swift in Sources */,
 				D1D43F4F2C95509B00D65A84 /* QuizView.swift in Sources */,
 				D1D43F432C95215800D65A84 /* TopChart.swift in Sources */,
 				D18B32D12CA4510500E1C5A7 /* QuizCategoryIntent.swift in Sources */,

@@ -24,7 +24,6 @@ final class QuizModel: ObservableObject, QuizStateProtocol {
     @Published var isSongPresented: Bool = false
     @Published var isArtworkPresented: Bool = false
     @Published var cancellable: AnyCancellable?
-    @Published var realmCancellable: AnyCancellable?
     
     let categoryState: QuizCategoryStateProtocol
     let categoryIntent: QuizCategoryIntentProtocol
@@ -35,10 +34,6 @@ final class QuizModel: ObservableObject, QuizStateProtocol {
     init(categoryState: QuizCategoryStateProtocol, categoryIntent: QuizCategoryIntentProtocol) {
         self.categoryState = categoryState
         self.categoryIntent = categoryIntent
-        
-        cancellable = quizList.objectWillChange.sink { [weak self] _ in
-            self?.objectWillChange.send()
-        }
     }
 }
 

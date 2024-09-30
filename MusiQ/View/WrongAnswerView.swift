@@ -10,15 +10,9 @@ import RealmSwift
 import MusicKit
 
 struct WrongAnswerView: View {
-    @ObservedResults(Quiz.self)
-    var quizList
-    
-    @State private var searchText = ""
-    
-    var filteredQuizList: LazyFilterSequence<Results<Quiz>> {
-        let filteredList = quizList.filter { !$0.isCorrect && (searchText.isEmpty || $0.songName.localizedCaseInsensitiveContains(searchText) || $0.artistName.localizedCaseInsensitiveContains(searchText)) }
-        return filteredList
-    }
+    @StateObject var container: MVIContainer<WrongAnswerIntentProtocol, WrongAnswerStateProtocol>
+    private var state: WrongAnswerStateProtocol { container.model }
+    private var intent: WrongAnswerIntentProtocol { container.intent }
     
     var body: some View {
         NavigationView {
@@ -29,7 +23,7 @@ struct WrongAnswerView: View {
     
     @ViewBuilder
     func contentView() -> some View {
-        if quizList.where({ !$0.isCorrect }).isEmpty {
+        if state.quizList.where({ !$0.isCorrect }).isEmpty {
             Text("틀린 문제가 없습니다.")
                 .font(.title)
                 .bold()
@@ -40,7 +34,7 @@ struct WrongAnswerView: View {
     
     func wrongAnswerList() -> some View {
         ScrollView {
-            if filteredQuizList.isEmpty {
+            if state.filteredQuizList.isEmpty {
                 GeometryReader { geometry in
                     Text("검색 결과가 없습니다.")
                         .font(.title)
@@ -50,7 +44,7 @@ struct WrongAnswerView: View {
                 .frame(height: 200)
             } else {
                 LazyVStack {
-                    let uniqueQuizList = Dictionary(grouping: filteredQuizList, by: \.dataID)
+                    let uniqueQuizList = Dictionary(grouping: state.filteredQuizList, by: \.dataID)
                         .compactMap { $0.value.first } // 틀린 문제 중복표시 방지
                     ForEach(Array(uniqueQuizList), id: \.dataID) { item in
                         NavigationLazyView(WrongAnswerCell(item: item))
@@ -60,7 +54,12 @@ struct WrongAnswerView: View {
         }
         .navigationTitle("틀린 문제 목록")
         .padding()
-        .searchable(text: $searchText, prompt: "제목 또는 가수로 검색할 수 있습니다.")
+        .searchable(text: Binding(
+            get: { state.searchText },
+            set: { newValue in
+                intent.updateSearchText(newValue)
+            }
+        ), prompt: "제목 또는 가수로 검색할 수 있습니다.")
     }
 }
 
@@ -95,5 +94,16 @@ private struct WrongAnswerCell: View {
             .foregroundStyle(.text)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+extension WrongAnswerView {
+    static func build() -> some View {
+        let model = WrongAnswerModel()
+        let intent = WrongAnswerIntent(model: model)
+        let container = MVIContainer(intent: intent as WrongAnswerIntentProtocol,
+                                     model: model as WrongAnswerStateProtocol,
+                                     modelChangePublisher: model.objectWillChange)
+        return WrongAnswerView(container: container)
     }
 }
