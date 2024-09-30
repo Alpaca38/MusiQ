@@ -106,7 +106,7 @@ struct QuizView: View {
     
     func inputArtistField(songs: [SongData], songList: MusicItemCollection<Song>) -> some View {
         HStack {
-            TextField("가수 이름을 입력해주세요.", text: Binding(
+            TextField("가수 이름을 띄어쓰기 없이 입력해주세요.", text: Binding(
                 get: { state.inputArtistName },
                 set: { input in
                     intent.updateArtistField(input)

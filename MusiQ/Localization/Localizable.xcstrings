@@ -64,18 +64,18 @@
         }
       }
     },
-    "가수 이름을 입력해주세요." : {
+    "가수 이름을 띄어쓰기 없이 입력해주세요." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enter the singer's name."
+            "value" : "Enter the singer's name without blank."
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "가수 이름을 입력해주세요."
+            "state" : "translated",
+            "value" : "가수 이름을 띄어쓰기 없이 입력해주세요."
           }
         }
       }
@@ -402,7 +402,7 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "제목을 띄어쓰기 없이 입력해주세요."
           }
         }
@@ -563,7 +563,7 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "플레이한 장르 비율"
           }
         }
