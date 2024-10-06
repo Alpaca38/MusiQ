@@ -17,9 +17,6 @@ struct QuizView: View {
     
     var body: some View {
         contentView()
-            .task {
-                intent.loadSongs(state.categoryState.selectedGenre!)
-            }
             .applyBackground()
             .onTapGesture {
                 isFocused = false
@@ -29,6 +26,8 @@ struct QuizView: View {
     @ViewBuilder
     func contentView() -> some View {
         switch state.contentState {
+        case .selectAmount:
+            selectAmountView()
         case .loading:
             ProgressView("노래를 불러오는 중...")
         case .content(let songs, let songList):
@@ -45,6 +44,31 @@ struct QuizView: View {
             }
         case .error(let string):
             Text(string)
+        }
+    }
+    
+    func selectAmountView() -> some View {
+        VStack(spacing: 20) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 25.0)
+                    .fill(.linearGradient(.init(colors: [.yellow, .orange]), startPoint: .top, endPoint: .bottom))
+                    .frame(width: 350, height: 350)
+                
+                let text = state.categoryState.mode.name == Mode.song.name ? "노래 듣고 맞추기" : "앨범커버 보고 맞추기"
+                Text(text.localized)
+                    .font(.custom("CookieRunOTF-Bold", size: 38))
+                    .foregroundStyle(.text)
+            }
+            
+            HStack(spacing: 15) {
+                ForEach(SongAmount.allCases, id: \.self) { item in
+                    Text("\(item.limit)개")
+                        .asDefaultButtonStyle()
+                        .asButton {
+                            intent.loadSongs(state.categoryState.selectedGenre!, limit: item.limit)
+                        }
+                }
+            }
         }
     }
     
@@ -136,7 +160,8 @@ struct QuizView: View {
                 currentSongList: currentSongList,
                 currentIndex: state.categoryState.currentSongIndex,
                 categoryIntent: state.categoryIntent,
-                quizIntent: intent
+                quizIntent: intent,
+                songAmount: state.songAmount
             ))
         }
     }
@@ -158,6 +183,29 @@ extension QuizView {
                                      model: model as QuizStateProtocol,
                                      modelChangePublisher: model.objectWillChange)
         return QuizView(container: container)
+    }
+    
+    private enum SongAmount: CaseIterable, Hashable {
+        case ten
+        case twenty
+        case thirty
+        case fourty
+        case fifty
+        
+        var limit: Int {
+            switch self {
+            case .ten:
+                10
+            case .twenty:
+                20
+            case .thirty:
+                30
+            case .fourty:
+                40
+            case .fifty:
+                50
+            }
+        }
     }
 }
 

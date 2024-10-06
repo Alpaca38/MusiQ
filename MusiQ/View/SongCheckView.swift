@@ -48,9 +48,9 @@ struct SongCheckView: View {
         VStack {
             Text(state.isCorrect ? "정답" : "오답")
                 .bold()
-            Text(state.currentIndex < 9 ? "다음" : "완료")
+            Text(state.currentIndex < state.songAmount - 1 ? "다음" : "완료")
                 .asButton {
-                    if state.currentIndex < 9 {
+                    if state.currentIndex < state.songAmount - 1 {
                         state.categoryIntent.submitAnswer()
                         state.quizIntent.dismiss()
                     } else {
@@ -63,8 +63,8 @@ struct SongCheckView: View {
 }
 
 extension SongCheckView {
-    static func build(mode: Mode, genre: GenreSelection, isCorrect: Bool, songData: SongData, currentSongList: Song, currentIndex: Int, categoryIntent: any QuizCategoryIntentProtocol, quizIntent: QuizIntentProtocol) -> some View {
-        let model = SongCheckModel(mode: mode, genre: genre, isCorrect: isCorrect, songData: songData, currentSongList: currentSongList, currentIndex: currentIndex, categoryIntent: categoryIntent, quizIntent: quizIntent)
+    static func build(mode: Mode, genre: GenreSelection, isCorrect: Bool, songData: SongData, currentSongList: Song, currentIndex: Int, categoryIntent: any QuizCategoryIntentProtocol, quizIntent: QuizIntentProtocol, songAmount: Int) -> some View {
+        let model = SongCheckModel(mode: mode, genre: genre, isCorrect: isCorrect, songData: songData, currentSongList: currentSongList, currentIndex: currentIndex, categoryIntent: categoryIntent, quizIntent: quizIntent, songAmount: songAmount)
         let intent = SongCheckIntent(model: model)
         let container = MVIContainer(intent: intent as SongCheckIntentProtocol,
                                      model: model as SongCheckStateProtocol,

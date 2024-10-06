@@ -12,10 +12,10 @@ final class MusicKitManager: ObservableObject {
     static let shared = MusicKitManager()
     private init() {}
     
-    func fetchTopChart(with genre: GenreSelection, offset: Int) async throws -> [SongData] {
+    func fetchTopChart(with genre: GenreSelection, offset: Int, limit: Int) async throws -> [SongData] {
         do {
             let currentCountry = try await MusicDataRequest.currentCountryCode
-            guard let url = URL(string: "https://api.music.apple.com/v1/catalog/\(currentCountry)/charts?types=songs&genre=\(genre.genreData.id)&limit=10&offset=\(offset)") else {
+            guard let url = URL(string: "https://api.music.apple.com/v1/catalog/\(currentCountry)/charts?types=songs&genre=\(genre.genreData.id)&limit=\(limit)&offset=\(offset)") else {
                 throw URLError(.badURL)
             }
             let request = MusicDataRequest(urlRequest: URLRequest(url: url))
@@ -29,14 +29,14 @@ final class MusicKitManager: ObservableObject {
         }
     }
     
-    func fetchCityTopChart(with genreSelection: GenreSelection, offset: Int) async throws -> MusicItemCollection<Song> {
+    func fetchCityTopChart(with genreSelection: GenreSelection, offset: Int, limit: Int) async throws -> MusicItemCollection<Song> {
         let genre = try await getGenre(genreSelection.genreData.id)
         var request = MusicCatalogChartsRequest(
             genre: genre.data.first,
             kinds: [.cityTop],
             types: [Song.self]
         )
-        request.limit = 10
+        request.limit = limit
         request.offset = offset
         
         return try await request.response().songCharts.first!.items

@@ -17,8 +17,9 @@ final class SongCheckModel: ObservableObject, SongCheckStateProtocol {
     var currentIndex: Int
     var categoryIntent: any QuizCategoryIntentProtocol
     var quizIntent: any QuizIntentProtocol
+    var songAmount: Int
     
-    init(mode: Mode, genre: GenreSelection, isCorrect: Bool, songData: SongData, currentSongList: Song, currentIndex: Int, categoryIntent: any QuizCategoryIntentProtocol, quizIntent: any QuizIntentProtocol) {
+    init(mode: Mode, genre: GenreSelection, isCorrect: Bool, songData: SongData, currentSongList: Song, currentIndex: Int, categoryIntent: any QuizCategoryIntentProtocol, quizIntent: any QuizIntentProtocol, songAmount: Int) {
         self.mode = mode
         self.genre = genre
         self.isCorrect = isCorrect
@@ -27,6 +28,7 @@ final class SongCheckModel: ObservableObject, SongCheckStateProtocol {
         self.currentIndex = currentIndex
         self.categoryIntent = categoryIntent
         self.quizIntent = quizIntent
+        self.songAmount = songAmount
     }
 }
 
@@ -39,4 +41,5 @@ protocol SongCheckStateProtocol: AnyObject {
     var currentIndex: Int { get }
     var categoryIntent: QuizCategoryIntentProtocol { get }
     var quizIntent: QuizIntentProtocol { get }
+    var songAmount: Int { get }
 }

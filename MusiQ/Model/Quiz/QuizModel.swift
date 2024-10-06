@@ -11,19 +11,21 @@ import Combine
 import RealmSwift
 
 enum QuizContentState {
+    case selectAmount
     case loading
     case content(songs: [SongData], songList: MusicItemCollection<Song>)
     case error(String)
 }
 
 final class QuizModel: ObservableObject, QuizStateProtocol {
-    @Published var contentState: QuizContentState = .loading
+    @Published var contentState: QuizContentState = .selectAmount
     @Published var isPlaying: Bool = false
     @Published var inputSongName: String = ""
     @Published var inputArtistName: String = ""
     @Published var isSongPresented: Bool = false
     @Published var isArtworkPresented: Bool = false
     @Published var cancellable: AnyCancellable?
+    @Published var songAmount: Int = 10
     
     let categoryState: QuizCategoryStateProtocol
     let categoryIntent: QuizCategoryIntentProtocol
@@ -93,6 +95,10 @@ extension QuizModel: QuizActionsProtocol {
             $quizList.append(Quiz(mode: categoryState.mode.name, genre: categoryState.selectedGenre!.genreData.name, isCorrect: isCorrect, dataID: currentSong.id, artworkURL: currentSongList.artwork?.url(width: 50, height: 50)?.absoluteString, songName: currentSong.attributes.name, artistName: currentSong.attributes.artistName))
         }
     }
+    
+    func updateLimit(_ limit: Int) {
+        songAmount = limit
+    }
 }
 
 protocol QuizStateProtocol {
@@ -104,6 +110,7 @@ protocol QuizStateProtocol {
     var isArtworkPresented: Bool { get }
     var categoryState: QuizCategoryStateProtocol { get }
     var categoryIntent: QuizCategoryIntentProtocol { get }
+    var songAmount: Int { get }
 }
 
 protocol QuizActionsProtocol: AnyObject {
@@ -119,4 +126,5 @@ protocol QuizActionsProtocol: AnyObject {
     func updateArtistName(_ input: String)
     func resetInput()
     func saveHistory(songs: [SongData], songList: MusicItemCollection<Song>, isCorrect: Bool)
+    func updateLimit(_ limit: Int)
 }

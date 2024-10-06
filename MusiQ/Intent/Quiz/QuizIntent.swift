@@ -15,19 +15,16 @@ final class QuizIntent: QuizIntentProtocol {
         self.model = model
     }
     
-    func viewOnAppear(_ genre: GenreSelection) {
-        loadSongs(genre)
-    }
-    
-    func loadSongs(_ genre: GenreSelection) {
+    func loadSongs(_ genre: GenreSelection, limit: Int) {
         model?.updateContentState(.loading)
         Task {
             await MusicKitAuthManager.shared.requestMusicAuthorization()
             do {
                 let random = Int.random(in: 0...90)
-                let songs = try await MusicKitManager.shared.fetchTopChart(with: genre, offset: random)
-                let songList = try await MusicKitManager.shared.fetchCityTopChart(with: genre, offset: random)
+                let songs = try await MusicKitManager.shared.fetchTopChart(with: genre, offset: random, limit: limit)
+                let songList = try await MusicKitManager.shared.fetchCityTopChart(with: genre, offset: random, limit: limit)
                 model?.updateContentState(.content(songs: songs, songList: songList))
+                model?.updateLimit(limit)
             } catch {
                 model?.updateContentState(.error(error.localizedDescription))
             }
@@ -78,8 +75,7 @@ final class QuizIntent: QuizIntentProtocol {
 }
 
 protocol QuizIntentProtocol {
-    func viewOnAppear(_ genre: GenreSelection)
-    func loadSongs(_ genre: GenreSelection)
+    func loadSongs(_ genre: GenreSelection, limit: Int)
     func togglePlay(_ isPlaying: Bool, _ url: URL?)
     func checkSongName(_ isPlaying: Bool)
     func checkArtistName()
