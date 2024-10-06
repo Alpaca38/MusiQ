@@ -18,6 +18,9 @@ struct WrongAnswerView: View {
             contentView()
                 .applyBackground()
         }
+        .task {
+            await intent.updateSubscription()
+        }
     }
     
     @ViewBuilder
@@ -46,7 +49,7 @@ struct WrongAnswerView: View {
                     let uniqueQuizList = Dictionary(grouping: state.filteredQuizList, by: \.dataID)
                         .compactMap { $0.value.first } // 틀린 문제 중복표시 방지
                     ForEach(Array(uniqueQuizList), id: \.dataID) { item in
-                        NavigationLazyView(WrongAnswerCell(item: item, intent: intent))
+                        NavigationLazyView(WrongAnswerCell(item: item, state: state, intent: intent))
                     }
                 }
             }
@@ -64,6 +67,7 @@ struct WrongAnswerView: View {
 
 private struct WrongAnswerCell: View {
     let item: Quiz
+    let state: WrongAnswerStateProtocol
     let intent: WrongAnswerIntentProtocol
     
     var body: some View {
@@ -97,6 +101,7 @@ private struct WrongAnswerCell: View {
         .asButton {
             intent.playMusic(item.dataID)
         }
+        .disabled(!(state.musicSubscription?.canPlayCatalogContent ?? false)) // 구독 상태 아니면 버튼 비활성화
     }
 }
 

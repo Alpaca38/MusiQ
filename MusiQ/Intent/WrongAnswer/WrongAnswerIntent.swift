@@ -24,9 +24,14 @@ class WrongAnswerIntent: WrongAnswerIntentProtocol {
             try await MusicKitManager.shared.playMusic(id: MusicItemID(id))
         }
     }
+    
+    func updateSubscription() async {
+        await model?.updateSubscription()
+    }
 }
 
 protocol WrongAnswerIntentProtocol {
     func updateSearchText(_ text: String)
     func playMusic(_ id: String)
+    func updateSubscription() async
 }
