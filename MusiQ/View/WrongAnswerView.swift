@@ -7,7 +7,6 @@
 
 import SwiftUI
 import RealmSwift
-import MusicKit
 
 struct WrongAnswerView: View {
     @StateObject var container: MVIContainer<WrongAnswerIntentProtocol, WrongAnswerStateProtocol>
@@ -47,7 +46,7 @@ struct WrongAnswerView: View {
                     let uniqueQuizList = Dictionary(grouping: state.filteredQuizList, by: \.dataID)
                         .compactMap { $0.value.first } // 틀린 문제 중복표시 방지
                     ForEach(Array(uniqueQuizList), id: \.dataID) { item in
-                        NavigationLazyView(WrongAnswerCell(item: item))
+                        NavigationLazyView(WrongAnswerCell(item: item, intent: intent))
                     }
                 }
             }
@@ -65,6 +64,7 @@ struct WrongAnswerView: View {
 
 private struct WrongAnswerCell: View {
     let item: Quiz
+    let intent: WrongAnswerIntentProtocol
     
     var body: some View {
         HStack(spacing: 15) {
@@ -94,6 +94,9 @@ private struct WrongAnswerCell: View {
             .foregroundStyle(.text)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+        .asButton {
+            intent.playMusic(item.dataID)
+        }
     }
 }
 

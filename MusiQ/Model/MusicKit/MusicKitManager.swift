@@ -12,6 +12,8 @@ final class MusicKitManager: ObservableObject {
     static let shared = MusicKitManager()
     private init() {}
     
+    private let player = ApplicationMusicPlayer.shared
+    
     func fetchTopChart(with genre: GenreSelection, offset: Int, limit: Int) async throws -> [SongData] {
         do {
             let currentCountry = try await MusicDataRequest.currentCountryCode
@@ -59,5 +61,21 @@ final class MusicKitManager: ObservableObject {
             print(error)
             return Genres(data: [])
         }
+    }
+    
+    func playMusic(id: MusicItemID) async throws {
+        let request = MusicCatalogResourceRequest<Song>(matching: \.id, equalTo: id)
+        let response = try await request.response()
+        
+        guard let song = response.items.first else { return }
+        
+        player.queue = [song]
+        
+        try await player.prepareToPlay()
+        try await player.play()
+    }
+    
+    func pauseMusic() {
+        player.pause()
     }
 }

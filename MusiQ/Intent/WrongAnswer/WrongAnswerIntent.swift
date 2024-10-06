@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MusicKit
 
 class WrongAnswerIntent: WrongAnswerIntentProtocol {
     private weak var model: WrongAnswerActionsProtocol?
@@ -17,8 +18,15 @@ class WrongAnswerIntent: WrongAnswerIntentProtocol {
     func updateSearchText(_ text: String) {
         model?.updateSearchText(text)
     }
+    
+    func playMusic(_ id: String) {
+        Task {
+            try await MusicKitManager.shared.playMusic(id: MusicItemID(id))
+        }
+    }
 }
 
 protocol WrongAnswerIntentProtocol {
     func updateSearchText(_ text: String)
+    func playMusic(_ id: String)
 }
