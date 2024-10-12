@@ -36,3 +36,6 @@
 | 퀴즈 모드 선택 | 퀴즈 모드 선택 | 노래 듣고 맞추기 | 앨범 커버 보고 맞추기 | 틀린 문제 목록 | 차트 |
 | --- | --- | --- | --- | --- | --- |
 | ![IMG_1993](https://github.com/user-attachments/assets/04474397-aec0-4074-806b-7d2bed905b51) | ![IMG_2001](https://github.com/user-attachments/assets/94acba63-dba6-47a1-a62f-631b78bce3f8) | ![IMG_2028](https://github.com/user-attachments/assets/28f00616-292e-41cc-8a3e-43573211ac13)  | ![IMG_1999](https://github.com/user-attachments/assets/5277f25e-30d5-434a-ab03-ca13bf365460) | ![IMG_1994](https://github.com/user-attachments/assets/b8970a14-624c-4cf9-9fca-c97b32d84b8d) | ![IMG_1995](https://github.com/user-attachments/assets/7e859949-2298-4cb9-95bb-8cdb236ab4f4) |
+
+### 업데이트
+- 노래 개수를 선택할 수 있는 기능 추가 (v 1.1.0)
