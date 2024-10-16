@@ -1,8 +1,11 @@
-# MusiQ
+#  <img src= "https://github.com/user-attachments/assets/e2a43258-12ed-44c5-93c6-5506eaf93ea1" width="35" height="35" > MusiQ
 
 ## 프로젝트 소개
 > 음악을 듣거나 앨범 커버를 보고 제목이나 아티스트를 맞추는 음악 퀴즈 앱
-
+<a href="https://apps.apple.com/kr/app/musiq-%EB%85%B8%EB%9E%98-%EB%A7%9E%EC%B6%94%EA%B8%B0/id6711330766">
+    <img width="200" alt="appstore" src="https://github.com/nbcamp-archive/kkuk-ios/assets/26790710/72caf6ff-b829-4608-98d9-16d42d0a3eb0">
+</a>
+  
 ### 최소 지원 버전
 > iOS 16
 
