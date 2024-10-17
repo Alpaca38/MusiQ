@@ -1,4 +1,4 @@
-#  <img src= "https://github.com/user-attachments/assets/e2a43258-12ed-44c5-93c6-5506eaf93ea1" width="35" height="35" > MusiQ
+# MusiQ
 
 ## 프로젝트 소개
 > 음악을 듣거나 앨범 커버를 보고 제목이나 아티스트를 맞추는 음악 퀴즈 앱
