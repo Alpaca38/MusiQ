@@ -5,7 +5,12 @@
 <a href="https://apps.apple.com/kr/app/musiq-%EB%85%B8%EB%9E%98-%EB%A7%9E%EC%B6%94%EA%B8%B0/id6711330766">
     <img width="200" alt="appstore" src="https://github.com/nbcamp-archive/kkuk-ios/assets/26790710/72caf6ff-b829-4608-98d9-16d42d0a3eb0">
 </a>
-  
+
+### 화면
+| 퀴즈 모드 선택 | 퀴즈 모드 선택 | 노래 듣고 맞추기 | 앨범 커버 보고 맞추기 | 틀린 문제 목록 | 차트 |
+| --- | --- | --- | --- | --- | --- |
+| ![IMG_1993](https://github.com/user-attachments/assets/04474397-aec0-4074-806b-7d2bed905b51) | ![IMG_2001](https://github.com/user-attachments/assets/94acba63-dba6-47a1-a62f-631b78bce3f8) | ![IMG_2028](https://github.com/user-attachments/assets/28f00616-292e-41cc-8a3e-43573211ac13)  | ![IMG_1999](https://github.com/user-attachments/assets/5277f25e-30d5-434a-ab03-ca13bf365460) | ![IMG_1994](https://github.com/user-attachments/assets/b8970a14-624c-4cf9-9fca-c97b32d84b8d) | ![IMG_1995](https://github.com/user-attachments/assets/7e859949-2298-4cb9-95bb-8cdb236ab4f4) |
+
 ### 최소 지원 버전
 > iOS 16
 
@@ -34,11 +39,6 @@
 - SwiftUI, Combine
 - Charts / MusicKit / Apple Music API
 - NWPathMonitor
-
-### 화면
-| 퀴즈 모드 선택 | 퀴즈 모드 선택 | 노래 듣고 맞추기 | 앨범 커버 보고 맞추기 | 틀린 문제 목록 | 차트 |
-| --- | --- | --- | --- | --- | --- |
-| ![IMG_1993](https://github.com/user-attachments/assets/04474397-aec0-4074-806b-7d2bed905b51) | ![IMG_2001](https://github.com/user-attachments/assets/94acba63-dba6-47a1-a62f-631b78bce3f8) | ![IMG_2028](https://github.com/user-attachments/assets/28f00616-292e-41cc-8a3e-43573211ac13)  | ![IMG_1999](https://github.com/user-attachments/assets/5277f25e-30d5-434a-ab03-ca13bf365460) | ![IMG_1994](https://github.com/user-attachments/assets/b8970a14-624c-4cf9-9fca-c97b32d84b8d) | ![IMG_1995](https://github.com/user-attachments/assets/7e859949-2298-4cb9-95bb-8cdb236ab4f4) |
 
 ### 업데이트
 - 노래 개수를 선택할 수 있는 기능 추가 (v 1.1.0)
