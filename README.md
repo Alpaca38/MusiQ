@@ -51,7 +51,7 @@
 - **네트워크 연결 상태 모니터링**
     - NWPathMonitor로 네트워크 상태를 감지하는 객체를 구성했습니다. @StateObject로 객체의 상태에 따라 뷰를 변화시켜 주었습니다.
       <p align="center">
-      <img src="https://github.com/user-attachments/assets/2a9e23fb-714c-49d6-a69e-769246dc2444" width="200" height="400"/>
+      <img src="https://github.com/user-attachments/assets/b1d18304-23b6-4088-b86f-adb0dd78c0da" width="200" height="400"/> <img src="https://github.com/user-attachments/assets/2a9e23fb-714c-49d6-a69e-769246dc2444" width="200" height="400"/>
       </p>
 
 
