@@ -29,6 +29,12 @@
 - **다국어 지원 |** 영어 대응
 - **네트워크 |** 네트워크 연결 상태 대응
 
+### 사용 기술 및 라이브러리
+- MVVM / Realm
+- SwiftUI, Combine
+- Charts / MusicKit / Apple Music API
+- NWPathMonitor
+
 ### 주요 기술
 - **MVI**
 ![MVI](https://github.com/user-attachments/assets/425673c7-d7c8-4f2b-bf05-f231f30728b3)
@@ -41,12 +47,13 @@
         - MVI는 상태가 전이되는 과정이 명확하게 드러납니다. 모든 상태 전이는 특정 Intent로 인해 발생하며, 이로 인해 상태 변화를 추적하거나 디버깅하는 것이 쉬워집니다. 반면에 MVVM에서는 상태 전이가 명확하지 않고 여러 곳에서 상태가 변할 수 있어 복잡도가 증가할 수 있습니다.
     - **결론**
         - SwiftUI는 UI를 상태 기반으로 업데이트하는 구조이므로, 명확하고 일관된 상태 관리와 단방향 데이터 흐름을 강조하는 MVI 패턴이 MVVM보다 더 적합하다고 생각했습니다.
+     
+- **네트워크 연결 상태 모니터링**
+    - NWPathMonitor로 네트워크 상태를 감지하는 객체를 구성했습니다. @StateObject로 객체의 상태에 따라 뷰를 변화시켜 주었습니다.
+      <p align="center">
+      <img src="https://github.com/user-attachments/assets/2a9e23fb-714c-49d6-a69e-769246dc2444" width="200" height="400"/>
+      </p>
 
-### 사용 기술 및 라이브러리
-- MVVM / Realm
-- SwiftUI, Combine
-- Charts / MusicKit / Apple Music API
-- NWPathMonitor
 
 ### 업데이트
 - 노래 개수를 선택할 수 있는 기능 추가 (v 1.1.0)
