@@ -30,7 +30,7 @@
 - **네트워크 |** 네트워크 연결 상태 대응
 
 ### 사용 기술 및 라이브러리
-- MVVM / Realm
+- MVI / Realm
 - SwiftUI, Combine
 - Charts / MusicKit / Apple Music API
 - NWPathMonitor
