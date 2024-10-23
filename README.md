@@ -54,6 +54,12 @@
       <img src="https://github.com/user-attachments/assets/b1d18304-23b6-4088-b86f-adb0dd78c0da" width="200" height="400"/> <img src="https://github.com/user-attachments/assets/2a9e23fb-714c-49d6-a69e-769246dc2444" width="200" height="400"/>
       </p>
 
+### 회고
+- **MVI 아키텍처 구성**
+  
+    MVI로 프로젝트를 구성하면서 단방향 아키텍처의 명확한 상태관리라는 이점에 대해 느껴볼 수 있었습니다.
+    하지만 MVVM 처럼 MVI도 개발자마다 다른 방식으로 구성할 수 있기 때문에 협업 시에 도입하기 애매할 수도 있겠다는 생각이 들었습니다.
+    다음 프로젝트에서는 많은 회사들에서 SwiftUI로 신규 프로젝트를 진행할 때 사용하는 TCA로 구성해 볼까 합니다.
 
 ### 업데이트
 - 노래 개수를 선택할 수 있는 기능 추가 (v 1.1.0)
