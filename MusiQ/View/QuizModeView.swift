@@ -14,10 +14,14 @@ struct QuizModeView: View {
     
     var body: some View {
         NavigationView {
-            cardListView()
-            .navigationTitle("퀴즈 모드 선택")
-            .padding(.bottom, 150)
-            .applyBackground()
+            ZStack {
+                MusicAnimationBackground()
+                
+                cardListView()
+                .navigationTitle("퀴즈 모드 선택")
+                .padding(.bottom, 150)
+                .applyBackground()
+            }
         }
     }
     
