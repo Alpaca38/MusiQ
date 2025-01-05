@@ -425,6 +425,16 @@
         }
       }
     },
+    "진행률 (%lld/%lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "진행률 (%1$lld/%2$lld)"
+          }
+        }
+      }
+    },
     "총 %lld개의 곡 플레이" : {
       "localizations" : {
         "en" : {

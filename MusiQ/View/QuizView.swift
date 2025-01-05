@@ -75,6 +75,8 @@ struct QuizView: View {
     @ViewBuilder
     func songView(songs: [SongData], songList: MusicItemCollection<Song>) -> some View {
         VStack(spacing: 50) {
+            progressView()
+            
             ZStack {
                 RoundedRectangle(cornerRadius: 25.0)
                     .fill(.linearGradient(.init(colors: [.green, .blue]), startPoint: .top, endPoint: .bottom))
@@ -119,6 +121,8 @@ struct QuizView: View {
     @ViewBuilder
     func artworkView(songs: [SongData], songList: MusicItemCollection<Song>) -> some View {
         VStack(spacing: 40) {
+            progressView()
+            
             if let currentSongList = songList[safe: state.categoryState.currentSongIndex], let artwork = currentSongList.artwork {
                 ArtworkImage(artwork, width: 350)
                     .clipShape(RoundedRectangle(cornerRadius: 25.0))
@@ -146,6 +150,26 @@ struct QuizView: View {
                 .asDefaultButtonStyle()
         }
         .padding()
+    }
+    
+    @ViewBuilder
+    func progressView() -> some View {
+        // 질문
+        let text = state.categoryState.mode.name == Mode.song.name ? "이 노래의 제목은 무엇일까요?" : "이 노래를 부른 가수는 누구일까요?"
+        Text(text.localized)
+            .font(.custom("CookieRunOTF-Bold", size: 24))
+            .foregroundStyle(.text)
+        
+        // 진행 상태
+        VStack {
+            Text("진행률 (\(state.categoryState.currentSongIndex + 1)/\(state.songAmount))")
+                .font(.custom("CookieRunOTF-Regular", size: 14))
+                .foregroundStyle(.text)
+            
+            ProgressView(value: Double(state.categoryState.currentSongIndex + 1) / Double(state.songAmount))
+                .progressViewStyle(LinearProgressViewStyle(tint: .green))
+                .padding()
+        }
     }
     
     @ViewBuilder
