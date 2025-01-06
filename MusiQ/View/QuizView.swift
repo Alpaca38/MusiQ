@@ -78,9 +78,10 @@ struct QuizView: View {
             progressView()
             
             ZStack {
-                RoundedRectangle(cornerRadius: 25.0)
-                    .fill(.linearGradient(.init(colors: [.green, .blue]), startPoint: .top, endPoint: .bottom))
-                    .frame(width: 350, height: 350)
+                if let currentSongList = songList[safe: state.categoryState.currentSongIndex], let artwork = currentSongList.artwork {
+                    ArtworkImage(artwork, width: 350)
+                        .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                }
                 playButton(songList[state.categoryState.currentSongIndex].previewAssets?.first?.url)
             }
             inputSongField(songs: songs, songList: songList)
