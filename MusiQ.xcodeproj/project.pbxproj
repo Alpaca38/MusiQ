@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D16E74682D2CE1DE005956EC /* MusicAnimationBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74672D2CE1DE005956EC /* MusicAnimationBackground.swift */; };
 		D18B32C22CA2A1EF00E1C5A7 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B32C12CA2A1EF00E1C5A7 /* SoundManager.swift */; };
 		D18B32CE2CA4502600E1C5A7 /* QuizCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B32CD2CA4502600E1C5A7 /* QuizCategoryModel.swift */; };
 		D18B32D12CA4510500E1C5A7 /* QuizCategoryIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B32D02CA4510500E1C5A7 /* QuizCategoryIntent.swift */; };
@@ -76,7 +75,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D16E74672D2CE1DE005956EC /* MusicAnimationBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAnimationBackground.swift; sourceTree = "<group>"; };
 		D18B32C12CA2A1EF00E1C5A7 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		D18B32CD2CA4502600E1C5A7 /* QuizCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCategoryModel.swift; sourceTree = "<group>"; };
 		D18B32D02CA4510500E1C5A7 /* QuizCategoryIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCategoryIntent.swift; sourceTree = "<group>"; };
@@ -273,7 +271,6 @@
 				D1D43F612C9AE5BF00D65A84 /* WrongAnswerView.swift */,
 				D1D43F632C9C3E5900D65A84 /* MyChartView.swift */,
 				D1D43F672CA0097100D65A84 /* BackgroundView.swift */,
-				D16E74672D2CE1DE005956EC /* MusicAnimationBackground.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -556,7 +553,6 @@
 				D1D43F3E2C94788E00D65A84 /* MusicKitAuthManager.swift in Sources */,
 				D1D43F522C95A6B900D65A84 /* Mode.swift in Sources */,
 				D18B33002CAA6FCD00E1C5A7 /* SongCheckIntent.swift in Sources */,
-				D16E74682D2CE1DE005956EC /* MusicAnimationBackground.swift in Sources */,
 				D1D43F682CA0097100D65A84 /* BackgroundView.swift in Sources */,
 				D1D43F1E2C9423E000D65A84 /* ContentView.swift in Sources */,
 				D1D43F892CA13A3500D65A84 /* RootPresentationIntetn.swift in Sources */,

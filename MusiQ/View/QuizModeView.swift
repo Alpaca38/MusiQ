@@ -15,7 +15,12 @@ struct QuizModeView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                MusicAnimationBackground()
+                LinearGradient(
+                    colors: [Color.purple, Color.blue],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .ignoresSafeArea()
                 
                 cardListView()
                 .navigationTitle("퀴즈 모드 선택")
