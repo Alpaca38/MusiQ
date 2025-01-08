@@ -14,19 +14,19 @@ struct QuizModeView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
-                LinearGradient(
-                    colors: [Color.purple, Color.blue],
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-                .ignoresSafeArea()
+            VStack {
+                Text("퀴즈 모드를 선택해보세요!")
+                .multilineTextAlignment(.leading)
+                .font(.custom("CookieRunOTF-Bold", size: 32))
+                .padding()
+                
+                Text("카드를 좌우로 넘겨 모드를 선택할 수 있습니다.")
+                    .font(.custom("CookieRunOTF-Regular", size: 13))
+                    .foregroundStyle(.secondary)
                 
                 cardListView()
-                .navigationTitle("퀴즈 모드 선택")
-                .padding(.bottom, 150)
-                .applyBackground()
             }
+            .applyBackground()
         }
     }
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D16E74732D2E5869005956EC /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74722D2E5869005956EC /* CustomButton.swift */; };
 		D18B32C22CA2A1EF00E1C5A7 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B32C12CA2A1EF00E1C5A7 /* SoundManager.swift */; };
 		D18B32CE2CA4502600E1C5A7 /* QuizCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B32CD2CA4502600E1C5A7 /* QuizCategoryModel.swift */; };
 		D18B32D12CA4510500E1C5A7 /* QuizCategoryIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B32D02CA4510500E1C5A7 /* QuizCategoryIntent.swift */; };
@@ -75,6 +76,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D16E74722D2E5869005956EC /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		D18B32C12CA2A1EF00E1C5A7 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		D18B32CD2CA4502600E1C5A7 /* QuizCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCategoryModel.swift; sourceTree = "<group>"; };
 		D18B32D02CA4510500E1C5A7 /* QuizCategoryIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCategoryIntent.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				D1D43F612C9AE5BF00D65A84 /* WrongAnswerView.swift */,
 				D1D43F632C9C3E5900D65A84 /* MyChartView.swift */,
 				D1D43F672CA0097100D65A84 /* BackgroundView.swift */,
+				D16E74722D2E5869005956EC /* CustomButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				D1D43F452C952A3C00D65A84 /* QuizModeView.swift in Sources */,
 				D1D43F802CA1355200D65A84 /* NetworkMonitorIntent.swift in Sources */,
 				D18B32E02CA6B46600E1C5A7 /* QuizIntent.swift in Sources */,
+				D16E74732D2E5869005956EC /* CustomButton.swift in Sources */,
 				D1D43F602C9AE19000D65A84 /* Quiz.swift in Sources */,
 				D1D43F6D2CA0278300D65A84 /* Extension+String.swift in Sources */,
 				D1D43F1C2C9423E000D65A84 /* MusiQApp.swift in Sources */,
@@ -736,7 +740,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = Jo.MusiQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -774,7 +778,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = Jo.MusiQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";

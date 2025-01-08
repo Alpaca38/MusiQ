@@ -451,6 +451,9 @@
         }
       }
     },
+    "카드를 좌우로 넘겨 모드를 선택할 수 있습니다." : {
+
+    },
     "퀴즈" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -469,6 +472,7 @@
       }
     },
     "퀴즈 모드 선택" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -483,6 +487,9 @@
           }
         }
       }
+    },
+    "퀴즈 모드를 선택해보세요!" : {
+
     },
     "통계" : {
       "localizations" : {
