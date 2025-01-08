@@ -9,7 +9,7 @@
 ### 화면
 | 퀴즈 모드 선택 | 퀴즈 모드 선택 | 노래 듣고 맞추기 | 앨범 커버 보고 맞추기 | 틀린 문제 목록 | 차트 |
 | --- | --- | --- | --- | --- | --- |
-| <img src="https://github.com/user-attachments/assets/aa01fac2-1644-4dda-8a30-575e7d1a5c62" width="200"> | <img src="https://github.com/user-attachments/assets/27151997-f705-4d76-bc18-c75306d484e1" width="200"> | <img src="https://github.com/user-attachments/assets/84038279-d8d2-47dd-b1b2-df49dbea1df1" width="200"> | <img src="https://github.com/user-attachments/assets/34768baf-7ca2-40ef-b259-4823acdffdde" width="200"> | <img src="https://github.com/user-attachments/assets/b8970a14-624c-4cf9-9fca-c97b32d84b8d" width="200"> | <img src="https://github.com/user-attachments/assets/7e859949-2298-4cb9-95bb-8cdb236ab4f4" width="200"> |
+| <img src="https://github.com/user-attachments/assets/220b4c00-6ff9-44ac-af24-59394840f0e3" width="200"> | <img src="https://github.com/user-attachments/assets/5debaa2a-6fa0-49cd-a013-63dbaa664d11" width="200"> | <img src="https://github.com/user-attachments/assets/84038279-d8d2-47dd-b1b2-df49dbea1df1" width="200"> | <img src="https://github.com/user-attachments/assets/34768baf-7ca2-40ef-b259-4823acdffdde" width="200"> | <img src="https://github.com/user-attachments/assets/b8970a14-624c-4cf9-9fca-c97b32d84b8d" width="200"> | <img src="https://github.com/user-attachments/assets/7e859949-2298-4cb9-95bb-8cdb236ab4f4" width="200"> |
 
 ### 최소 지원 버전
 > iOS 16
