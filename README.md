@@ -24,33 +24,19 @@
 ### 핵심 기능
 
 - **퀴즈 모드**
-
     - 노래 맞히기
     - 앨범 커버 맞히기
     - 다양한 음악 장르 지원 (R&B, 힙합, K-pop)
-    - 오답 노트 및 통계 기능
-
+    - 오답 노트 및 다양한 통계 지원
 
 - **음악 연동 기능**
-
-    - Apple Music API 연동
+    - Apple Music 연동
     - 실시간 음악 재생
-    - 청취 기록 관리
-
-
 
 - **다국어 지원**
-
-    - 영어 인터페이스
-    - 한국어 인터페이스
+    - 영어 인터페이스 지원
+    - 한국어 인터페이스 지원
     - 현지화 지원
-
-
-- **네트워크 및 데이터 관리**
-    - REST API 연동
-    - NWPathMonitor를 통한 네트워크 상태 모니터링
-    - 오프라인 모드 지원
-    - 실시간 연결 상태 업데이트
 
 ### 사용 기술 및 라이브러리
 - MVI / Realm
@@ -61,28 +47,39 @@
 ### 주요 기술
 - **MVI**
 ![MVI](https://github.com/user-attachments/assets/425673c7-d7c8-4f2b-bf05-f231f30728b3)
-- **MVVM과 MVI 중 MVI를 선택한 이유**
-    - **단방향 데이터 흐름**
-        - MVI 패턴에서는 모든 데이터 흐름이 단방향으로 이루어집니다. 사용자 액션이 발생하면 Intent가 생성되고, 이 Intent가 처리된 후 새로운 상태(State)로 전환됩니다. SwiftUI는 상태 기반 UI 업데이트를 지원하므로, 이런 단방향 데이터 흐름이 SwiftUI의 선언적 UI 업데이트 방식과 자연스럽게 어우러집니다.
-    - **명확한 상태 관리**
-        - MVI는 View가 오직 하나의 상태(State)만 참조하도록 강제합니다. MVVM에서는 ViewModel에서 상태 변화와 로직 처리가 섞일 수 있어 복잡해질 수 있지만, MVI는 상태(Model)와 로직(Intent)이 명확히 분리되어 더 나은 관리가 가능합니다.
-    - **명시적인 상태 전이**
-        - MVI는 상태가 전이되는 과정이 명확하게 드러납니다. 모든 상태 전이는 특정 Intent로 인해 발생하며, 이로 인해 상태 변화를 추적하거나 디버깅하는 것이 쉬워집니다. 반면에 MVVM에서는 상태 전이가 명확하지 않고 여러 곳에서 상태가 변할 수 있어 복잡도가 증가할 수 있습니다.
-    - **결론**
-        - SwiftUI는 UI를 상태 기반으로 업데이트하는 구조이므로, 명확하고 일관된 상태 관리와 단방향 데이터 흐름을 강조하는 MVI 패턴이 MVVM보다 더 적합하다고 생각했습니다.
-     
-- **네트워크 연결 상태 모니터링**
-    - NWPathMonitor로 네트워크 상태를 감지하는 객체를 구성했습니다. @StateObject로 객체의 상태에 따라 뷰를 변화시켜 주었습니다.
+    - 상태를 Intent를 통해서만 변경이 가능하도록 단방향 아키텍처 구현
+    - View는 Model을 직접 참조하지 않고 Intent와 Model로 구성된 Container를 참조
+    - 상태 변화(Model)와 로직(Intent)을 분리
+    - 상태 변화를 추적하기 쉽고 항상 예측이 가능한 형태로 구성됨
+    - 각 요소들이 역할에 따라 분리되어 있어 확장 및 유지보수 용이
+
+- **NWPathMonitor**
+    - 네트워크 상태를 다루는 Model과 로직을 다루는 Intent로 구성된 Container를 구성하고 ContentView에 주입
+    - @StateObject로 객체의 상태에 따라 뷰 업데이트
       <p align="center">
       <img src="https://github.com/user-attachments/assets/b1d18304-23b6-4088-b86f-adb0dd78c0da" width="200" height="400"/> <img src="https://github.com/user-attachments/assets/2a9e23fb-714c-49d6-a69e-769246dc2444" width="200" height="400"/>
       </p>
 
-### 회고
-- **MVI 아키텍처 구성**
-  
-    MVI로 프로젝트를 구성하면서 단방향 아키텍처의 명확한 상태관리라는 이점에 대해 느껴볼 수 있었습니다.
-    하지만 MVVM 처럼 MVI도 개발자마다 다른 방식으로 구성할 수 있기 때문에 협업 시에 도입하기 애매할 수도 있겠다는 생각이 들었습니다.
-    다음 프로젝트에서는 많은 회사들에서 SwiftUI로 신규 프로젝트를 진행할 때 사용하는 TCA로 구성해 볼까 합니다.
+- **modelChangePublisher**
+  - modelChangePublisher를 통해 Model의 변경사항을 감지하고, objectWillChange.send()를 호출하여 뷰 업데이트
+  - 구독을 Cancellable에 저장하여 인스턴스 해제 시 자동 구독 해제
+ 
+- **화면 전환**
+    - 마지막 퀴즈 이후 첫 화면으로 되돌아가기 위해 RootContainer 활용
+    - API 통신을 통해 응답받는 Content의 상태를 열거형으로 구성하고 Content의 상태에 따라 다른 View가 나타나도록 구현
+ 
+- **ViewModifier**
+    - ViewModifier를 사용해 커스텀 UI의 재사용성 증대
+    - ViewModifier의 내부구조는 private으로 은닉화하고 View의 Extension을 활용
+
+- **String Catalog**
+    - String Catalog를 사용해 다국어 지원
+    - String을 확장해 NSLocalizedString 반환
+
+### 트러블 슈팅
+    ForEach로 구성된 List나 Grid에 NavigationLink 사용 시 NavigationLink를 누르지 않아도 Link안의 View들이 모두 Init 되는 문제 발생
+    이러한 문제를 해결하기 위해 View를 생성하는 Closure를 이용해 Wrapping 하는 NavigationLazyView 구현
+    @autoclosure를 사용해 간결하게 사용할 수 있도록 구성
 
 ### 업데이트
 - 노래 개수를 선택할 수 있는 기능 추가 (v 1.1.0)
