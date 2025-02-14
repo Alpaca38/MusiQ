@@ -76,10 +76,10 @@
     - String Catalog를 사용해 다국어 지원
     - String을 확장해 NSLocalizedString 반환
 
-### 트러블 슈팅
-    ForEach로 구성된 List나 Grid에 NavigationLink 사용 시 NavigationLink를 누르지 않아도 Link안의 View들이 모두 Init 되는 문제 발생
-    이러한 문제를 해결하기 위해 View를 생성하는 Closure를 이용해 Wrapping 하는 NavigationLazyView 구현
-    @autoclosure를 사용해 간결하게 사용할 수 있도록 구성
+- **NavigationLazyView**
+    - NavigationLink는 누르지 않아도 Link의 View가 모두 Init 됨
+    - View를 생성하는 Closure를 활용해 Wrapping 하는 NavigationLazyView 설계
+    - @autoclosure를 활용해 간결하게 사용할 수 있도록 구성
 
 ### 업데이트
 - 노래 개수를 선택할 수 있는 기능 추가 (v 1.1.0)
